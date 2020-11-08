@@ -1,5 +1,4 @@
 # CS308_Slot-Booking-Project-TEAM-5-
-# LAP_Slot_Booking_Team5
 ## <center> The Slot Booking Project </center>
 
 ### <center> Design Document </center>
