@@ -77,7 +77,6 @@ session_start();
     </nav>
 
 	<body>
-    <div class="col-xs-12 line"><hr></div>
   <div class="paragraph3">
     <div class="missionbox">
       <div class="missionfont">      
