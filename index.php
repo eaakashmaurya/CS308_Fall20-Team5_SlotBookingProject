@@ -100,19 +100,15 @@ session_start();
 
 	<body>
 
-  <div class="paragraph3">
-    <div class="missionbox">
-      <div class="missionfont">      
+  <h3>
         <p> C4FDED Equipments Slot Booking App WELCOMES YOU! </p>
         <p> IF User is loged in then: The notifications about his requests for booking slots for a user appears here. </p>
         <p> IF Admin is loged in then: The notifications about pending approve booking of slots by admin appears here. </p>
         <p> Else redirected to login/signup page. </p>
 
-          <a href="myorders.php"> My Order History </a> <br>
+          <a href="myorders.php"> My Order History </a> <br> <br>
           <a href="myachievements.php"> My Achievement History </a>
-        </div>
-    </div>
-  </div>    
+        </h3>    
   
   <!-- <p> Add body here </p> -->
    <h3> LIST OF ITEMS </h3>
