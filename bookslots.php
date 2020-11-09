@@ -51,7 +51,7 @@ session_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="bookslots.php">Book Slots</a>
+          <!-- <a class="navbar-brand" href="index.php">Book Slots</a> --> 
         </div>
 
         <div class="collapse navbar-collapse " id="myNavbar">
@@ -77,15 +77,19 @@ session_start();
     </nav>
 
 	<body>
+    <div class="col-xs-12 line"><hr></div>
+  <div class="paragraph3">
+    <div class="missionbox">
+      <div class="missionfont">      
+            <p> IF User is loged in then: The options to request for booking slots for a user appears here. </p>
+            <p> IF Admin is loged in then: The options to approve booking of slots by admin appears here. </p>
+            <p> Else redirected to login/signup page. </p>
+    </div>
+     
+    </div>
+    
+  </div>    
   
-    <p> C4FDED Equipments Slot Booking App WELCOMES YOU! </p>
-    <p> IF User is loged in then: The notifications about his requests for booking slots for a user appears here. </p>
-    <p> IF Admin is loged in then: The notifications about pending approve booking of slots by admin appears here. </p>
-    <p> Else redirected to login/signup page. </p>
-
-      <a href="myorders.php"> My Order History </a> <br>
-      <a href="myachievements.php"> My Achievement History </a>
-
 	</body>
 
   <footer class="container-fluid bg-4 text-center">

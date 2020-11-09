@@ -77,15 +77,7 @@ session_start();
     </nav>
 
 	<body>
-  
-    <p> C4FDED Equipments Slot Booking App WELCOMES YOU! </p>
-    <p> IF User is loged in then: The notifications about his requests for booking slots for a user appears here. </p>
-    <p> IF Admin is loged in then: The notifications about pending approve booking of slots by admin appears here. </p>
-    <p> Else redirected to login/signup page. </p>
-
-      <a href="myorders.php"> My Order History </a> <br>
-      <a href="myachievements.php"> My Achievement History </a>
-
+	<p> List of your Equipment Purchases appears here. </p>
 	</body>
 
   <footer class="container-fluid bg-4 text-center">
