@@ -38,7 +38,9 @@ Initially you land in index file which is home page.
     <li>Admin Login Page</li>
     <li>User Login Page</li>
     <li>Admin SignUp Page</li>
-    <li>User SignUp Pahe</li>
+    <li>User SignUp Page</li>
+    <li>My Orders</li>
+    <li>My Profile</li>
     <li>About us</li>
     <li>Contact us</li>
 </ul>
