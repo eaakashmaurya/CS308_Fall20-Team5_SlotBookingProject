@@ -95,17 +95,22 @@ session_start();
       </div>
     </nav>
 
-<<<<<<< HEAD
 	<body>
+  div class="col-xs-12 line"><hr></div>
+  <div class="paragraph3">
+    <div class="missionbox">
+      <div class="missionfont">      
+        <p> C4FDED Equipments Slot Booking App WELCOMES YOU! </p>
+        <p> IF User is loged in then: The notifications about his requests for booking slots for a user appears here. </p>
+        <p> IF Admin is loged in then: The notifications about pending approve booking of slots by admin appears here. </p>
+        <p> Else redirected to login/signup page. </p>
+
+          <a href="myorders.php"> My Order History </a> <br>
+          <a href="myachievements.php"> My Achievement History </a>
+        </div>
+    </div>
+  </div>    
   
-    <p> C4FDED Equipments Slot Booking App WELCOMES YOU! </p>
-    <p> IF User is loged in then: The notifications about his requests for booking slots for a user appears here. </p>
-    <p> IF Admin is loged in then: The notifications about pending approve booking of slots by admin appears here. </p>
-    <p> Else redirected to login/signup page. </p>
-
-      <a href="myorders.php"> My Order History </a> <br>
-      <a href="myachievements.php"> My Achievement History </a>
-
   <!-- <p> Add body here </p> -->
 
    <div>
@@ -169,7 +174,6 @@ session_start();
       </table>
     </div>
   </body>
->>>>>>> ae712b03738ce610ca4a966cddba0295ab1db14e
 
   <footer class="container-fluid bg-4 text-center">
   <br>
