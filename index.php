@@ -7,6 +7,25 @@ session_start();
 
   <head>
     <title> Home | Slot Booking Project </title>
+
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+
   </head>
 
   <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
@@ -23,12 +42,12 @@ session_start();
     <script type="text/javascript">
       window.onscroll = function()
       {
-		console.log('Scrolling up')
+    console.log('Scrolling up')
         scrollFunction()
       };
 
       function scrollFunction(){
-		  
+      
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
           document.getElementById("myBtn").style.display = "block";
         } else {
@@ -55,19 +74,19 @@ session_start();
         </div>
 
         <div class="collapse navbar-collapse " id="myNavbar">
-          	<ul class="nav navbar-nav">
-				<li class="active" ><a href="index.php">Home</a></li>
-				<li><a href="aboutus.php">About</a></li>
-				<li><a href="contactus.php">Contact Us</a></li>
+            <ul class="nav navbar-nav">
+        <li class="active" ><a href="index.php">Home</a></li>
+        <li><a href="aboutus.php">About</a></li>
+        <li><a href="contactus.php">Contact Us</a></li>
 
-          	</ul>
+            </ul>
 
-		  	<ul class="nav navbar-nav navbar-right">
-				
-					<li> <a href="customersignup.php"> User Sign-up</a></li>
-					<li> <a href="adminsignup.php"> Admin Sign-up</a></li>
-             		<li> <a href="customerlogin.php"> User Login</a></li>
-              		<li> <a href="adminlogin.php"> Admin Login</a></li>
+        <ul class="nav navbar-nav navbar-right">
+        
+          <li> <a href="customersignup.php"> User Sign-up</a></li>
+          <li> <a href="adminsignup.php"> Admin Sign-up</a></li>
+                <li> <a href="customerlogin.php"> User Login</a></li>
+                  <li> <a href="adminlogin.php"> Admin Login</a></li>
              
             </ul>
 
@@ -76,9 +95,69 @@ session_start();
       </div>
     </nav>
 
-	<body>
-	<p> Add body here </p>
-	</body>
+  <body>
+  <!-- <p> Add body here </p> -->
+   <div>
+          <table>
+        <tr>
+          <th>SNo.</th>
+          <th>Equipment</th>
+          <th>Make/Model</th>
+          <th>AcademicSubsidized Charges for Internal Users</th>
+          <th>Charges for External Academic users</th>
+          <th>Charges for Industry users</th>
+        </tr>
+        <tr>
+          <td>1.</td>
+          <td>FESEM</td>
+          <td>Zeiss</td>
+          <td>750</td>
+          <td>1875</td>
+          <td>3750</td>
+        </tr>
+        <tr>
+          <td>2.</td>
+          <td>HE Ion Microscope</td>
+          <td>Orion, Zeiss</td>
+          <td>2000</td>
+          <td>5000</td>
+          <td>10000</td>
+        </tr>
+        <tr>
+          <td>3.</td>
+          <td>AFM</td>
+          <td>Bruker</td>
+          <td>500</td>
+          <td>1250</td>
+          <td>2500</td>
+        </tr>
+        <tr>
+          <td>4.</td>
+          <td>Raith EBL (exposure only)</td>
+          <td>Raith</td>
+          <td>1000</td>
+          <td>2500</td>
+          <td>5000</td>
+        </tr>
+        <tr>
+          <td>5.</td>
+          <td>Ellipsometer(Data Acquisition)</td>
+          <td>Accurion</td>
+          <td>500</td>
+          <td>1250</td>
+          <td>2500</td>
+        </tr>
+        <tr>
+          <td>6.</td>
+          <td>Ellipsometer(Modeling & Analysis)</td>
+          <td>Accurion</td>
+          <td>2500</td>
+          <td>6250</td>
+          <td>12500</td>
+        </tr>
+      </table>
+    </div>
+  </body>
 
   <footer class="container-fluid bg-4 text-center">
   <br>
