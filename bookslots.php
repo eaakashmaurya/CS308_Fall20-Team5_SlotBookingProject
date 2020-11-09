@@ -77,17 +77,11 @@ session_start();
     </nav>
 
 	<body>
-  <div class="paragraph3">
-    <div class="missionbox">
-      <div class="missionfont">      
-            <p> IF User is loged in then: The options to request for booking slots for a user appears here. </p>
-            <p> IF Admin is loged in then: The options to approve booking of slots by admin appears here. </p>
-            <p> Else redirected to login/signup page. </p>
-    </div>
-     
-    </div>
+      
+            <h3> IF User is loged in then: The options to request for booking slots for a user appears here. </h3><br>
+            <h3> IF Admin is loged in then: The options to approve booking of slots by admin appears here. </h3><br>
+            <h3> Else redirected to login/signup page. </h3>
     
-  </div>    
   
 	</body>
 
