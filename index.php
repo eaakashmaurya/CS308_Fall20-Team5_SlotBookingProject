@@ -107,6 +107,8 @@ session_start();
         <p> Else redirected to login/signup page. </p>
 
           <a href="myorders.php"> My Order History </a> <br> <br>
+          <a href="myorders.php"> My Order History </a> <br>
+	        <a href="myprofile.php"> My Profile </a> <br>
           <a href="myachievements.php"> My Achievement History </a>
         </h3>    
   
