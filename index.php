@@ -12,6 +12,7 @@ session_start();
     <title> Home | Slot Booking Project </title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type = "text/css" href ="css/index.css">
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <style>
@@ -33,10 +34,6 @@ session_start();
   </style>
 
   </head>
-
-  <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
-
-  <link rel="stylesheet" type = "text/css" href ="css/index.css">
 
   <body>
 
