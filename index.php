@@ -346,6 +346,8 @@ session_start();
         </tr>
       </table>
     </div>
+    <br>
+    <p>* All slots are per hour basis unless specified for particular instrument</p>
   </body>
 
   <footer class="container-fluid bg-4 text-center">
