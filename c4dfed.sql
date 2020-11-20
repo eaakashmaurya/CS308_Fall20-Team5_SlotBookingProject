@@ -42,7 +42,7 @@ LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
 /* source of database: https://c4dfed.com/wp-content/uploads/2019/05/c4dfed-Instruments-User-Charge-pages-13.pdf */
 
-INSERT INTO `equipment` VALUES (1,'FESEM','Zeiss',750,1875,3750,'per hour');
+INSERT INTO `equipment`s VALUES (1,'FESEM','Zeiss',750,1875,3750,'per hour');
 INSERT INTO `equipment` VALUES (2,'HE Ion Microscope','Orion, Zeiss',2000,5000,10000,'per hour');
 INSERT INTO `equipment` VALUES (3,'AFM','Bruker',500,1250,2500,'per hour');
 INSERT INTO `equipment` VALUES (4,'Raith EBL (exposure only)','Raith',1000,2500,5000,'per hour');
