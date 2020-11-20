@@ -86,7 +86,7 @@ session_start();
       <div class="panel-heading"> Create Account </div>
       <div class="panel-body">
         
-      <form role="form" action="manager_registered_success.php" method="POST">
+      <form role="form"  method="POST" action="signupadmin.php">
        
         <div class="row">
         <div class="form-group col-xs-12">
