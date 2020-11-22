@@ -1,17 +1,20 @@
 <?php
-include("database.php");
 extract($_POST);
 
 if(isset($submit))
 {
-	$rs=mysqli_query($conn,"select * from user where user_id='$user_id' and pass='$pass'");
+    echo $adminname;
+    echo "<br>";
+    echo $password;
+    echo "<br>";
+	$rs=mysqli_query($conn,"select * from AdminTable where adminname='$adminname' and password='$password'");
 	if(mysqli_num_rows($rs)<1)
 	{
 		$found="N";
 	}
 	else
 	{
-		$_SESSION["login"]=$user_id;
+		$_SESSION["login"]=$adminname;
 	}
 }
 if (isset($_SESSION["login"]))
@@ -28,7 +31,7 @@ exit;
     <title> Admin Login | Slot Booking Project </title>
   </head>
 
-  <link rel="stylesheet" type = "text/css" href ="css/managerlogin.css">
+  <link rel="stylesheet" type = "text/css" href ="css/adminlogin.css">
   <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
   
   <body>
@@ -104,13 +107,13 @@ exit;
         <div class="panel-heading"> Login </div>
         <div class="panel-body">
           
-        <form action="" method="POST">
+        <form action="" method="POST" >
           
         <div class="row">
           <div class="form-group col-xs-12">
-            <label for="username"><span class="text-danger" style="margin-right: 5px;">*</span> Username: </label>
+            <label for="username"><span class="text-danger" style="margin-right: 5px;">*</span> Adminname: </label>
             <div class="input-group">
-              <input class="form-control" id="username" type="text" name="username" placeholder="Username" required="" autofocus="">
+              <input class="form-control" id="adminname" type="text" name="adminname" placeholder="Adminname" required="" autofocus="">
               <span class="input-group-btn">
                 <label class="btn btn-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></label>
             </span>

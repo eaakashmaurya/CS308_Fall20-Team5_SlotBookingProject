@@ -1,12 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Admin Signup</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="quiz.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
 <?php
 
 extract($_POST);
@@ -39,7 +30,7 @@ $sql = "CREATE TABLE AdminTable
 (
 ID int NOT NULL AUTO_INCREMENT,
 FullName varchar(50),
-UserName varchar(50),
+AdminName varchar(50),
 Email varchar(50),
 Contact varchar(50),
 CityAddress varchar(50),
@@ -47,7 +38,7 @@ PRIMARY KEY (ID)
 )"; 
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table test created successfully";
+    echo "Table AdminTable created successfully";
 }
  else {
     echo "Error creating table: " . $conn->error;
@@ -61,13 +52,26 @@ if ($conn->query($sql) === TRUE) {
 // 	echo "<br><br><br><div class=head1>Login Id Already Exists</div>";
 // 	exit;
 // }
-$query="insert into AdminTable(fullname,username,email,contact,address) values('$fullname','$username','$email','$contact','$address')";
-$rs=mysqli_query($conn,$query);
-echo "<br><br><br><div class=head1>Your Login ID  $username Created Sucessfully</div>";
-echo "<br><div class=head1>Please Login using your Login ID to take Quiz</div>";
-echo "<br><div class=head1><a href=index.php>Login</a></div>";
+echo $fullname; 
+echo "<br>";
+echo $adminname;
+echo "<br>";
+echo $email;
+echo "<br>";
+echo $contact;
+echo "<br>";
+echo $address;
+echo "<br>";
 
+$query="insert into AdminTable(FullName,AdminName,Email,Contact,CityAddress) values('$fullname','$adminname','$email','$contact','$address')";
+mysqli_query($conn,$query);
+
+echo "<br><br><br>Your Login ID  $adminname Created Sucessfully";
+echo "<br>Please Login using your Login ID to review slot bookings";
+echo "<br><a href=index.php>Login</a>";
+
+// Redirect to login page.
+header("Location: adminlogin.php"); 
+exit;
 
 ?>
-</body>
-</html>
