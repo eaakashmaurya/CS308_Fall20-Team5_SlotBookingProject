@@ -7,20 +7,25 @@ if(isset($submit))
     echo "<br>";
     echo $password;
     echo "<br>";
+  
+  $servername = "localhost";
+  $username = "username";
+  $password = "password";
+  /* Create connection*/
+  $conn = mysqli_connect($servername, $username, $password);
+  /* Check connection*/
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
 	$rs=mysqli_query($conn,"select * from AdminTable where adminname='$adminname' and password='$password'");
-	if(mysqli_num_rows($rs)<1)
-	{
-		$found="N";
-	}
-	else
-	{
-		$_SESSION["login"]=$adminname;
-	}
+
+	$_SESSION["login"]=$adminname;
 }
 if (isset($_SESSION["login"]))
 {
 echo "<h1 align=center>Hye you are sucessfully login!!!</h1>";
-exit;
+header("Location: adminindex.php"); 
+// exit;
 }
 ?>
 
