@@ -1,8 +1,6 @@
 <?php
 session_start();
 ?>
-
-
 <html>
 
 <head>
@@ -86,7 +84,7 @@ session_start();
       <div class="panel-heading"> Create Account </div>
       <div class="panel-body">
         
-      <form role="form"  method="POST" action="signupadmin.php">
+      <form role="form"  method="POST" action="admindatabase.php">
        
         <div class="row">
         <div class="form-group col-xs-12">
@@ -103,9 +101,9 @@ session_start();
 
       <div class="row">
         <div class="form-group col-xs-12">
-          <label for="username"><span class="text-danger" style="margin-right: 5px;">*</span> Username: </label>
+          <label for="adminname"><span class="text-danger" style="margin-right: 5px;">*</span> Adminname: </label>
           <div class="input-group">
-            <input class="form-control" id="username" type="text" name="username" placeholder="Your Username" required="">
+            <input class="form-control" id="adminname" type="text" name="adminname" placeholder="Your Adminname" required="">
             <span class="input-group-btn">
               <label class="btn btn-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></label>
           </span>
@@ -175,7 +173,7 @@ session_start();
 
       </div>
       <label style="margin-left: 5px;">or</label> <br>
-     <label style="margin-left: 5px;"><a href="managerlogin.php">Have an account? Login.</a></label>
+     <label style="margin-left: 5px;"><a href="adminlogin.php">Have an account? Login.</a></label>
 
       </form>
 
