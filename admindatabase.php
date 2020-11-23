@@ -3,8 +3,10 @@
 extract($_POST);
 
 $servername = "localhost";
-$username = "username";
+$username = "review_site";
 $password = "password";
+$db = "c4dfed";
+
 /* Create connection*/
 $conn = mysqli_connect($servername, $username, $password);
 /* Check connection*/
@@ -23,7 +25,7 @@ else
 {
     echo "Error creating database: " . mysqli_error($conn);
 }
-$sql = "USE admin";
+$sql = "USE $db";
 mysqli_query($conn, $sql);
 /* sql to create table */
 $sql = "CREATE TABLE AdminTable

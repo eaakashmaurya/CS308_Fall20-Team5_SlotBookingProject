@@ -106,7 +106,6 @@ session_start();
         <p> IF Admin is loged in then: The notifications about pending approve booking of slots by admin appears here. </p>
         <p> Else redirected to login/signup page. </p>
 
-          <a href="myorders.php"> My Order History </a> <br> <br>
           <a href="myorders.php"> My Order History </a> <br>
 	        <a href="myprofile.php"> My Profile </a> <br>
           <a href="myachievements.php"> My Achievement History </a>
@@ -118,7 +117,7 @@ session_start();
 
 $hostname = "localhost";
 $username = "review_site";
-$password = "JxSLRkdutW";
+$password = "password";
 $db = "c4dfed";
 
 $dbconnect=mysqli_connect($hostname,$username,$password,$db);
@@ -127,6 +126,8 @@ if ($dbconnect->connect_error) {
   die("Database connection failed: " . $dbconnect->connect_error);
 }
 
+
+
 ?>
 
 <table border="1" align="center">
@@ -134,7 +135,7 @@ if ($dbconnect->connect_error) {
   <td>S.No</td>
   <td>Equipment</td>
   <td>Make/Model</td>
-  <td>Interrnal Academic Users Rate</td>
+  <td>Internal Academic Users Rate</td>
   <td>External Academic Users Rate</td>
   <td>Industry Users Rate</td>
   <td>Rate Type</td>
