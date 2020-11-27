@@ -1,93 +1,113 @@
 <?php
-session_start();
-?>
+  require 'session.php';
+  include 'navbar.php';
+  require_once 'model/db.php';
 
+  $msg = $msgClass = '';
+  function get_price($date1, $date2) {
+    $diff = date_diff(date_create($date1), date_create($date2));
+    $price = $diff->format("%a");
+    return $price * 1;
+  }
 
-<html>
-
-  <head>
-    <title> Home | Slot Booking Project </title>
-  </head>
-
-  <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
-
-  <link rel="stylesheet" type = "text/css" href ="css/index.css">
-
-  <body>
-
-  <!--Back to top button..................................................................................-->
-    <button onclick="topFunction()" id="myBtn" title="Go to top">
-      <span class="glyphicon glyphicon-chevron-up"></span>
-    </button>
-  <!--Javacript for back to top button....................................................................-->
-    <script type="text/javascript">
-      window.onscroll = function()
-      {
-		console.log('Scrolling up')
-        scrollFunction()
-      };
-
-      function scrollFunction(){
-		  
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          document.getElementById("myBtn").style.display = "block";
-        } else {
-          document.getElementById("myBtn").style.display = "none";
-        }
-      }
-
-      function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
-    </script>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top navigation-clean-search" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- <a class="navbar-brand" href="index.php">Book Slots</a> --> 
-        </div>
-
-        <div class="collapse navbar-collapse " id="myNavbar">
-          	<ul class="nav navbar-nav">
-				<li class="active" ><a href="index.php">Home</a></li>
-				<li><a href="aboutus.php">About</a></li>
-				<li><a href="contactus.php">Contact Us</a></li>
-
-          	</ul>
-
-		  	<ul class="nav navbar-nav navbar-right">
-				
-					<li> <a href="customersignup.php"> User Sign-up</a></li>
-					<li> <a href="adminsignup.php"> Admin Sign-up</a></li>
-             		<li> <a href="customerlogin.php"> User Login</a></li>
-              		<li> <a href="adminlogin.php"> Admin Login</a></li>
-             
-            </ul>
-
-          </ul>
-
-      </div>
-    </nav>
-
-	<body>
-      
-            <h3> IF User is loged in then: The options to request for booking slots for a user appears here. </h3><br>
-            <h3> IF Admin is loged in then: The options to approve booking of slots by admin appears here. </h3><br>
-            <h3> Else redirected to login/signup page. </h3>
+  // handle the get request base on user id
+  if (isset($_REQUEST['id'])) {
+    $id = mysqli_real_escape_string($conn, $_REQUEST['id']);
     
-  
-	</body>
+    $sql = "SELECT * FROM `equipment` WHERE `equip_id`='$id'";
+    $result = mysqli_query($conn, $sql);
+    
+    $row = mysqli_fetch_array($result);
+    // echo $row['equip_id'];
+    // echo $row['equip_price'];
+    $_SESSION['equip_id'] = $row['equip_id'];
+    $_SESSION['equip_price'] = $row['equip_price'];
+  }
 
-  <footer class="container-fluid bg-4 text-center">
-  <br>
-  <p> Slot Booking Project 2020 | &copy All Rights Reserved </p>
-  <br>
-  </footer>
-</html>
+  // Process booked eqipment and insert into database
+  if (filter_has_var(INPUT_POST, 'book')) {
+    $start = mysqli_real_escape_string($conn, $_POST['start']);
+    $end = mysqli_real_escape_string($conn, $_POST['end']);
+    $price = mysqli_real_escape_string($conn, $_POST['price']);
+    $sid = mysqli_real_escape_string($conn, $_POST['studentid']);
+    $eid = mysqli_real_escape_string($conn, $_POST['equipid']);
+    // echo "$eid";
+    $pending = "pending";
+    // check date if start date lower then end date output some error
+    if ($end <= $start) {
+      echo "Date Error";
+        $msg = "Please pick a correct date";
+        $msgClass = "red";
+    } 
+    else {
+        $totalPrice = get_price($start, $end);
+        // echo $totalPrice;
+        $sql = "INSERT INTO `record` (`record_start`, `record_end`, `record_price`, `record_approved_by`, `student_id`, `equip_id`)
+        VALUES ('$start', '$end', '$totalPrice','admin2', '$sid', '$eid');";
+        // INSERT INTO `record` (`record_start`, `record_end`, `record_price`,  `record_approved_by`, `student_id`, `equip_id`) 
+        // VALUES ( '2020-05-04', '2020-05-25', 21,'admin2', '01dns14f1030', 'A100100');
+        
+        $result = mysqli_query($conn, $sql);
+        if($result){
+          echo "Record inserted";
+          $sql = "UPDATE `equipment` SET equip_status='Booked' WHERE equip_id='$eid'";
+          $result1 = mysqli_query($conn, $sql);
+          if($result1) {
+            $msg = "<a href='index.php' class='white-text'><i class='fas fa-arrow-circle-left'></i></a> Booking success";
+            $msgClass = "green";
+          }
+        } else {
+          // echo "First query failed..." . mysqli_error($conn);
+        }
+    } 
+
+    
+  }
+  mysqli_close($conn);
+
+?>
+<section class="section">
+  <div class="container">
+    <h5><i class="fab fa-wpforms"></i> Booking information</h5>
+    <div class="divider"></div><br>
+    <?php if($msg != ''): ?>
+      <div class="card-panel <?php echo $msgClass; ?>">
+        <span class="white-text"><?php echo $msg; ?></span>
+      </div>
+    <?php endif ?>
+    <form enctype="multipart/form-data" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="card-panel">
+      <div class="row">
+        <div class="input-field col s6 m6">
+          <input readonly type="text" id="equipid" name="equipid" value="<?php echo $_SESSION['equip_id']; ?>">
+          <label for="id">Equipment id</label>
+        </div>
+        <div class="input-field col s6 m6">
+          <input readonly type="text" id="studentid" name="studentid" value="<?php echo $_SESSION['s_id']; ?>">
+          <label for="id">Student id</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6">
+          <input id="start" type="text" class="datepicker" name="start">
+          <label for="start">Start date</label>
+        </div>
+        <div class="input-field col s6 m6">
+          <input id="end" type="text" class="datepicker" name="end">
+          <label for="end">End date</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6">
+          <input readonly type="text" id="price" name="price" value="<?php echo $_SESSION['equip_price']; ?>">
+          <label for="price">Equipment  Price (RM) / day</label>
+        </div>
+      <div class="center">
+        <a href="index.php" class="btn btn-flat">Cancel</a>
+        <button type="submit" name="book" class="btn green">Book now</button>
+      </div>
+    </form>
+  </div>
+</section>
+<?php
+  include 'footer.php';
+?>
