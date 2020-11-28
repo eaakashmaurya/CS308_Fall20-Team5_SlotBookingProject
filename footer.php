@@ -1,3 +1,4 @@
+<!-- <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css"> -->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/chart.min.js"></script>
@@ -37,5 +38,10 @@
       }, 5000);
     });
   </script>
+  <!-- <footer class="container-fluid bg-4 text-center">
+  <br>
+  <p> Slot Booking Project 2020 | &copy All Rights Reserved </p>
+  <br>
+  </footer> -->
 </body>
 </html>
