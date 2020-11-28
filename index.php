@@ -17,7 +17,7 @@
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)):
           ?>
-          <div class='col s6 m3'>
+          <div class='col s12 m6'>
             <div class='card'>
               <div class='card-image'>
                 <img src='img/machine1.jpg' class='responsive-img' alt='equipment'>
@@ -71,6 +71,7 @@
                 <i class="fas fa-phone"></i>&nbsp;&nbsp;+606 555 2000<br>
                 <i class="fas fa-phone"></i>&nbsp;&nbsp;+606 331 6247<br>
                 <i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="#">iitmandi.ac.in</a>
+                <i> <a href="contactus.php"> Contact Us </a> </i>
               </p>
             </li>
           </ul>
