@@ -31,7 +31,7 @@
 
                 <?php if ($row['equip_status'] == 'Available'): ?>
                   <div class="center">
-                    <a href="booking.php?id=<?php echo $row['equip_id']; ?>" class="btn blue">Book</a>
+                    <a href="bookslots.php?id=<?php echo $row['equip_id']; ?>" class="btn blue">Book</a>
                   </div>
                 <?php else: ?>
                   <div class="center">

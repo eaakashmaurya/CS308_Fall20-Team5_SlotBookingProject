@@ -97,13 +97,9 @@
                     <i class="material-icons prefix">school</i>
                     <select name="department">
                       <option disabled selected>Please Select</option>
-                      <option value="FTMK">FTMK</option>
-                      <option value="FKE">FKE</option>
-                      <option value="FKEKK">FKEKK</option>
-                      <option value="FTP">FTP</option>
-                      <option value="FPTT">FPTT</option>
-                      <option value="FKP">FKP</option>
-                      <option value="FKM">FKM</option>
+                      <option value="FTMK"></option>
+                      <option value="FKE"> SCEE</option>
+                      <option value="FKEKK">SE</option>
                     </select>
                   </div>
                 </div>
