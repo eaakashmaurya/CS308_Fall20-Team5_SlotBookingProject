@@ -47,45 +47,73 @@ session_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="bookslots.php">Book Slots</a>
+          
         </div>
 
         <div class="collapse navbar-collapse " id="myNavbar">
           	<ul class="nav navbar-nav">
 				<li class="active" ><a href="index.php">Home</a></li>
-				<li><a href="aboutus.php">About</a></li>
+				
 				<li><a href="contactus.php">Contact Us</a></li>
 
           	</ul>
             <ul class="nav navbar-nav navbar-right">
 				
-					<li> <a href="customersignup.php"> User Sign-up</a></li>
-					<li> <a href="adminsignup.php"> Admin Sign-up</a></li>
-             		<li> <a href="customerlogin.php"> User Login</a></li>
-              		<li> <a href="adminlogin.php"> Admin Login</a></li>
-             
-            </ul>
 
       </div>
-    </nav>
+</nav>
 
 
     
     <h1><strong> ABOUT US </strong></h1>
  
-    </div>
+    
 
     <div class="col-xs-12 line"><hr></div>
-  <div class="paragraph3">
-    <div class="missionbox">
-      <div class="missionfont">
-      Our mission is to make your life easier by making the process of booking equipments handy both for management and users.
-      
-    </div>
+    <div class="paragraph3" >
+    <!-- <div class="missionbox"> -->
+      <!-- <div class="missionfont"> -->
      
-    </div>
+      <b> VISION of C4DFED Facility @ IIT Mandi</b><br><li text-align="left">
+    A World-Class Dynamic Infrastructure and Toolset  for Next Generation Integrated Circuits (IC’s) & Electronic Device Design & Fabrication Research and also technology development focusing  Semiconductor Industries.<br>
+    <li style="text-align: center;">
+The School of Computing and Electrical Engineering (SCEE), School of Engineering (SE) and School of Basic Sciences (SBS) currently have established diverse expertise and research projects and various program in this area as well others related area. 
+This centre will provide the state of art infrastructure, fulfilling the research needs for IIT Mandi research community and also build a network of faculties & researchers working in the electronic device design & fabrication field that can sustain
+ these activities and foster growth in an advanced area with broad participation or attaining its objective.
+<br><li style="text-align: center;">
+Industrial interactions will be an important focus.
+<br><li style="text-align: center;">
+A Regional Center is envisaged. and manpower development through outreach is one of the major objectives.
+<br><li style="text-align: center;">
+Vision of the centre is in line and synchronizes well with the vision of IIT Mandi : “To be a Leader in science and technology education, knowledge creation and innovation”
+<br><li style="text-align: center;">
+This is within the ambit of the Make in India Advanced Manufacturing National and State policies.
+
+<br>
+    <!-- </div> -->
+     
+    <!-- </div> -->
     
-  </div>    
+  </div>   
+  <div class="col-xs-12 line"><hr></div>
+    <div class="paragraph3"> 
+
+<b> Mission of C4DFED Facility @ IIT Mandi</b><br>
+
+<li>Creation of a centralized state of the art infrastructure facility for next generation integrated circuits (IC’s)/electronic device design & fabrication and also futuristic materials research for semiconductor industries.
+<br></li>
+<li>
+Develop and sustain educational resources and a skilled workforce for semiconductor industries through the team efforts.
+<br></li>
+Foster collaboration with industries and transfer of new technologies into products for commercial and public benefits .
+<br><li>
+To initiate an interdisciplinary MS (Research), M.Tech and PhD program.
+<br><li>
+Outreach training programme for undergraduates, post graduate and teachers & researchers of neighbouring institutes.
+<br><li>
+A REGIONAL FACILITY in North India / NATIONAL facility with access to universities and academic institutions as well as industry.
+<br>
+</div>
   
          </body>
 
