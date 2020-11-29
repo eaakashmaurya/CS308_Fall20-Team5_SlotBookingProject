@@ -133,6 +133,17 @@
             <a href="user_edit.php?id=<?php echo $_SESSION['s_id']; ?>" class="btn1"><i class="fas fa-pencil-alt"></i>&nbsp Edit</a>
           </div>
         </li>
+        <li>
+          <div class="collapsible-header blue darken-2 white-text">
+              <i class="fas fa-trophy"></i>&nbsp Manage Publications
+            </div>
+            <div class="collapsible-body">
+              <a href="publication_edit.php?id=<?php echo $_SESSION['s_id']; ?>" class="btn1"><i class="fas fa-trophy"></i>&nbsp Add Publication</a>
+            <p><span class="grey-text">Delete Publication</span> </p>
+          
+          </div>
+
+        </li>
       </ul>
     </div>
   </section>
