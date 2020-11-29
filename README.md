@@ -29,21 +29,4 @@ Step4. Fork this repo and clone it. Add this to your htdocs and run it like any 
 
 Step5. Please also start xampp server.
 
-#### Design 
-
-Initially you land in index file which is home page.
-
-<ul>
-    <li>Slot Booking Page</li>
-    <li>Admin Login Page</li>
-    <li>User Login Page</li>
-    <li>Admin SignUp Page</li>
-    <li>User SignUp Page</li>
-    <li>My Orders</li>
-    <li>My Profile</li>
-    <li>About us</li>
-    <li>Contact us</li>
-</ul>
-
-
-
+Step6. Open localhost/phpmydmin/ on your browser and upload our database "smart_tagging_system" there by creating a new database and importing it from the codefiles "database/smart_tagging_system.sql".
