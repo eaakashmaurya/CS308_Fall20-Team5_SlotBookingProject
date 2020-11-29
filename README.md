@@ -29,4 +29,4 @@ Step4. Fork this repo and clone it. Add this to your htdocs and run it like any 
 
 Step5. Please also start xampp server.
 
-Step6. Open localhost/phpmydmin/ on your browser and upload our database "smart_tagging_system" there by creating a new database and importing it from the codefiles "database/smart_tagging_system.sql".
+Step6. Open localhost/phpmydmin/ on your browser and upload our database "c4dfed_facility_booking" there by creating a new database and importing it from the codefiles "database/c4dfed_facility_booking.sql".

@@ -2,7 +2,7 @@
   $serverName = "localhost";
   $userName = "root";
   $password = "";
-  $database = "smart_tagging_system";
+  $database = "c4dfed_facility_booking";
 
   // Create connection
   $conn = mysqli_connect($serverName, $userName, $password, $database);

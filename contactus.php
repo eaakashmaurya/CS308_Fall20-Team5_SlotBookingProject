@@ -116,7 +116,8 @@ session_start();
         <p><h3>Even if there is something you always wanted to use and couldn't find it here <font color="green"><strong></strong></font>in the list, please do let us know and we here at <font color="green"><strong>Management Team promise to do our best to give you best service.</strong></font> </h3></p>
         <p><b><h3>Contact Details of Team Equipment Project are given below.</h3></b></p>
         <p class="edit2">
-        <strong>Postal Address  :</strong>  Co-ordinator,<br>
+        <strong>Postal Address  :</strong><br>
+        Co-ordinator,<br>
         Centre for Design and Fabrication of Electronic Devices (C4DFED)<br>
         Room No. 102, A4-Building,  Indian Institute of Technology (IIT), Mandi<br>
         Kamand Campus (South), IIT Mandi – 175 005 (Himachal Pradesh), India<br> 

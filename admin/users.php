@@ -65,7 +65,7 @@
           <tr>
             <td><?php echo $i; $i++; ?></td>
             <td><?php echo $row['student_id']; ?></td>
-            <td><?php echo $row['student_username']; ?></td>
+            <!-- <td><?php echo $row['student_username']; ?></td> -->
             <td><?php echo $row['student_name']; ?></td>
             <td><?php echo $row['student_email']; ?></td>
             <td><?php echo $row['student_phone']; ?></td>
