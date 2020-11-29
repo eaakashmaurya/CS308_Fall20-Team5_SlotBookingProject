@@ -1,9 +1,11 @@
-<?php
+ <?php
   session_start();
   include 'navbar.php';
   require 'model/db.php';
 ?>
+
 <section class="section">
+
   <div class="container">
     <h5><i class="fas fa-box blue-text"></i> Equipment List</h5>
     <div class="divider"></div><br>
@@ -81,4 +83,5 @@
 </section>
 <?php
   include 'footer.php';
-?>
+?> 
+

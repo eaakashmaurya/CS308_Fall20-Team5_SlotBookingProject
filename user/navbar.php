@@ -76,6 +76,8 @@
     </li>
     <li><a href="index.php"><i class="fas fa-info-circle"></i>&nbsp  Status</a></li>
     <li><a href="../index.php"><i class="fas fa-home"></i>&nbsp  Home</a></li>
+    <li><a href="../myachievements.php"><i class="fas fa-trophy"></i>&nbsp Publications</a></li>
+  
     <?php if (isset($_SESSION['s_id'])): ?>
       <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Logout</a></li>
     <?php else: ?>

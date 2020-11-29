@@ -78,18 +78,26 @@
                     <label for="id">Your User Id</label>
                   </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">face</i>
-                    <input type="text" id="name" name="username" value="<?php echo isset($_POST['username']) ? $username : ''; ?>">
+                    <input type="text" id="name" name="username" value="
+                    <!-- <?php echo isset($_POST['username']) ? $username : ''; ?>"> -->
                     <label for="name">Your Username</label>
                   </div>
-                </div>
+                </div> -->
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
                     <input type="text" id="name" name="name" value="<?php echo isset($_POST['name']) ? $name : ''; ?>">
                     <label for="name">Your Full Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" id="supervisorname" name="supervisorname" value="<?php echo isset($_POST['supervisorname']) ? $supervisorname : ''; ?>">
+                    <label for="name">Supervisor Name</label>
                   </div>
                 </div>
                 <div class="row">
