@@ -13,7 +13,7 @@
             <div class="row">
               <div class="col s6 m6 grey-text">
                 <?php
-                  $sql = "SELECT COUNT(record_sub) as sub from `record` WHERE record_sub='active' AND student_id='".$_SESSION['s_id']."'";
+                  $sql = "SELECT COUNT(record_sub) as sub from `record` WHERE record_sub='active' AND student_id='".$_SESSION['u_id']."'";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['sub']."</h5>";
@@ -31,7 +31,7 @@
             <div class="row">
               <div class="col s6 m6 grey-text">
                 <?php
-                  $sql = "SELECT COUNT(record_status) as status from `record` WHERE record_status='pending' AND student_id='".$_SESSION['s_id']."'";
+                  $sql = "SELECT COUNT(record_status) as status from `record` WHERE record_status='pending' AND student_id='".$_SESSION['u_id']."'";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['status']."</h5>";
@@ -49,7 +49,7 @@
             <div class="row">
               <div class="col s6 m6 grey-text">
                 <?php
-                  $sql = "SELECT COUNT(record_sub) as sub from `record` WHERE record_sub='expired' AND student_id='".$_SESSION['s_id']."'";
+                  $sql = "SELECT COUNT(record_sub) as sub from `record` WHERE record_sub='expired' AND student_id='".$_SESSION['u_id']."'";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['sub']."</h5>";
@@ -67,7 +67,7 @@
             <div class="row">
               <div class="col s6 m6 grey-text">
                 <?php
-                  $sql = "SELECT COUNT(student_id) as equipment from `record` WHERE student_id='".$_SESSION['s_id']."'";
+                  $sql = "SELECT COUNT(student_id) as equipment from `record` WHERE student_id='".$_SESSION['u_id']."'";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['equipment']."</h5>";
@@ -104,7 +104,7 @@
               <tbody>
                 <?php
                   $i = 1;
-                  $sql = "SELECT * FROM `record` WHERE student_id='".$_SESSION['s_id']."'";
+                  $sql = "SELECT * FROM `record` WHERE student_id='".$_SESSION['u_id']."'";
                   $result = mysqli_query($conn, $sql);
                   while ($row = mysqli_fetch_array($result)):
                 ?>
@@ -127,10 +127,10 @@
             <i class="fas fa-user"></i>&nbsp User profile
           </div>
           <div class="collapsible-body">
-            <p><span class="grey-text">Name:</span> <?php echo strtoupper($_SESSION['s_name']); ?></p>
-            <p><span class="grey-text">Phone:</span> <?php echo $_SESSION['s_phone']; ?></p>
-            <p><span class="grey-text">Email:</span> <?php echo $_SESSION['s_email']; ?></p>
-            <a href="user_edit.php?id=<?php echo $_SESSION['s_id']; ?>" class="btn1"><i class="fas fa-pencil-alt"></i>&nbsp Edit</a>
+            <p><span class="grey-text">Name:</span> <?php echo strtoupper($_SESSION['u_name']); ?></p>
+            <p><span class="grey-text">Phone:</span> <?php echo $_SESSION['u_phone']; ?></p>
+            <p><span class="grey-text">Email:</span> <?php echo $_SESSION['u_email']; ?></p>
+            <a href="user_edit.php?id=<?php echo $_SESSION['u_id']; ?>" class="btn1"><i class="fas fa-pencil-alt"></i>&nbsp Edit</a>
           </div>
         </li>
         <li>
@@ -138,7 +138,7 @@
               <i class="fas fa-trophy"></i>&nbsp Manage Publications
             </div>
             <div class="collapsible-body">
-              <a href="publication_edit.php?id=<?php echo $_SESSION['s_id']; ?>" class="btn1"><i class="fas fa-trophy"></i>&nbsp Add Publication</a>
+              <a href="publication_edit.php?id=<?php echo $_SESSION['u_id']; ?>" class="btn1"><i class="fas fa-trophy"></i>&nbsp Add Publication</a>
             <p><span class="grey-text">Delete Publication</span> </p>
           
           </div>

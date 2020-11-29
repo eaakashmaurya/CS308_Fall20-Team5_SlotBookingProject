@@ -5,7 +5,7 @@
   require 'model/db.php';
 
   // if user already login redirect them to index page
-  if (isset($_SESSION['s_id'])) {
+  if (isset($_SESSION['u_id'])) {
     header("Location: index.php");
   }
 
@@ -20,7 +20,7 @@
     // Check if inputs are empty
     if (!empty($id) && !empty($password)){
       // success
-      $sql = "SELECT * FROM `student` WHERE `student_id`='$id'";
+      $sql = "SELECT * FROM `user` WHERE `user_id`='$id'";
       $result = mysqli_query($conn, $sql);
       $resultCheck = mysqli_num_rows($result);
       $row = mysqli_fetch_assoc($result);
@@ -31,17 +31,18 @@
         $msgClass = "red";
       } else {
         // dehashing the password
-        $pwdCheck = password_verify($_POST['password'], $row['student_pwd']);
+        $pwdCheck = password_verify($_POST['password'], $row['user_pwd']);
 
         if($pwdCheck == false) {
           $msg = "Invalid password";
           $msgClass = "red";
         } elseif ($pwdCheck == true) {
-          $_SESSION['s_id'] = $row['student_id'];
-          $_SESSION['s_username'] = $row['student_username'];
-          $_SESSION['s_name'] = $row['student_name'];
-          $_SESSION['s_email'] = $row['student_email'];
-          $_SESSION['s_phone'] = $row['student_phone'];
+          $_SESSION['u_id'] = $row['user_id'];
+          $_SESSION['u_name'] = $row['user_name'];
+          $_SESSION['u_email'] = $row['user_email'];
+          $_SESSION['u_SUname'] = $row['user_supervisor'];
+          $_SESSION['u_SUemail'] = $row['user_supervisor_email'];
+          $_SESSION['u_type'] = $row['user_type'];
 
           header("location: index.php");
         }

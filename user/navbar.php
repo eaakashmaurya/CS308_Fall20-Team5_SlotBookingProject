@@ -32,10 +32,10 @@
                 </div>
                 <div class="col s8">
                   <a href="#">
-                    <span class="name white-text"><?php echo $_SESSION['s_username']; ?></span>
+                    <span class="name white-text"><?php echo $_SESSION['u_username']; ?></span>
                   </a>
                   <a href="#">
-                    <span class="email white-text"><?php echo $_SESSION['s_email']; ?></span>
+                    <span class="email white-text"><?php echo $_SESSION['u_email']; ?></span>
                   </a>
                 </div>
               </div>
@@ -43,7 +43,7 @@
           </li>
           <li><a href="index.php"><i class="fas fa-info-circle"></i>&nbsp  Status</a></li>
           <li><a href="../index.php"><i class="fas fa-home"></i>&nbsp  Home</a></li>
-          <?php if (isset($_SESSION['s_id'])): ?>
+          <?php if (isset($_SESSION['u_id'])): ?>
             <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Logout</a></li>
           <?php else: ?>
             <li><a href="../login.php"><i class="fas fa-sign-in-alt"></i>&nbsp Login</a></li>
@@ -65,10 +65,10 @@
           </div>
           <div class="col s8">
             <a href="#">
-              <span class="name white-text"><?php echo $_SESSION['s_username']; ?></span>
+              <span class="name white-text"><?php echo $_SESSION['u_username']; ?></span>
             </a>
             <a href="#">
-              <span class="email white-text"><?php echo $_SESSION['s_email']; ?></span>
+              <span class="email white-text"><?php echo $_SESSION['u_email']; ?></span>
             </a>
           </div>
         </div>
@@ -78,7 +78,7 @@
     <li><a href="../index.php"><i class="fas fa-home"></i>&nbsp  Home</a></li>
     <li><a href="../myachievements.php"><i class="fas fa-trophy"></i>&nbsp Publications</a></li>
   
-    <?php if (isset($_SESSION['s_id'])): ?>
+    <?php if (isset($_SESSION['u_id'])): ?>
       <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Logout</a></li>
     <?php else: ?>
       <li><a href="../login.php"><i class="fas fa-sign-in-alt"></i>&nbsp Login</a></li>

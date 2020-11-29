@@ -122,30 +122,30 @@ CREATE TABLE `record` (
   `record_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1,
   PRIMARY KEY (`record_id`),
   `equip_id` int(11) FOREIGN KEY REFERENCES equipment(equip_id),
-  `user_id` int(11) FOREIGN KEY REFERENCES users(user_id),
+  `user_id` varchar(15) FOREIGN KEY REFERENCES user(user_id),
   `record_date` DATE NOT NULL, -- YYYY-MM-DD
   `record_start` TIME NOT NULL, -- hh:mm:ss
   `record_end` TIME NOT NULL, -- hh:mm:ss
   `record_qauntity` int(11) NOT NULL, -- in hours/samples/litres as per need
-  `record_status` varchar(10) NOT NULL DEFAULT 'pending'
+  `record_status` varchar(10) NOT NULL DEFAULT 'pending',
+  `record_price` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `user_id` varchar(15) NOT NULL, -- RollNumber/AffilationNumber
   PRIMARY KEY (`user_id`),
-  `user_username` varchar(15) NOT NULL, -- RollNumber/AffilationNumber
-  `user_pwd` varchar(15) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `user_email` varchar(255) NOT NULL,
   `user_supervisor` varchar(255) NOT NULL,
   `user_supervisor_email` varchar(255) NOT NULL,
-  `user_type` varchar(15) NOT NULL -- Internal/External/Industrial
+  `user_type` varchar(15) NOT NULL, -- Internal/External/Industry
+  `user_pwd` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

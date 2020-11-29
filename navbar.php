@@ -29,7 +29,7 @@
       <a href="#" class="brand-logo center"> C4DFED</a>
       <ul class="right hide-on-med-and-down black-text">
       
-        <?php if(isset($_SESSION['s_id'])): ?>
+        <?php if(isset($_SESSION['u_id'])): ?>
           <li class="active"><a href="index.php">Home</a></li>
           <li><a href="user/index.php">Dashboard</a></li>
           <li><a href="logout.php">Logout</a></li>
@@ -41,7 +41,7 @@
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <?php if(isset($_SESSION['s_id'])): ?>
+        <?php if(isset($_SESSION['u_id'])): ?>
           <li><a href="index.php">Home</a></li>
           <li><a href="user/index.php">Dashboard</a></li>
           <li><a href="logout.php">Logout</a></li>
@@ -56,7 +56,7 @@
     </div>
     
    </nav>
-  <?php if (isset($_SESSION['s_id'])): ?>
+  <?php if (isset($_SESSION['u_id'])): ?>
   <ul class="side-nav fixed">
     <li>
       <div class="user-view">
@@ -68,11 +68,11 @@
             <img src="img/user.png" alt="" class="circle">
           </div>
           <div class="col s8">
-            <a href="#">
-              <span class="name white-text"><?php echo $_SESSION['s_username']; ?></span>
+            <a href="#"> <!-- link to profile -->
+              <span class="name white-text"><?php echo $_SESSION['u_name']; ?></span>
             </a>
-            <a href="#">
-              <span class="email white-text"><?php echo $_SESSION['s_email']; ?></span>
+            <a href="#"> <!-- link to profile -->
+              <span class="email white-text"><?php echo $_SESSION['u_email']; ?></span>
             </a>
           </div>
         </div>

@@ -5,7 +5,7 @@
   require 'model/db.php';
 
   // if user already login redirect them to index page
-  if (isset($_SESSION['s_id'])) {
+  if (isset($_SESSION['u_id'])) {
     header("Location: index.php");
   }
 
@@ -15,15 +15,15 @@
   if (filter_has_var(INPUT_POST, 'submit')){
     // Get form data
     $id = mysqli_real_escape_string($conn, $_POST['id']);
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
     $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $dep = mysqli_real_escape_string($conn, $_POST['department']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $SUname = mysqli_real_escape_string($conn, $_POST['SUname']);
+    $SUemail = mysqli_real_escape_string($conn, $_POST['SUemail']);
+    $type = mysqli_real_escape_string($conn, $_POST['type']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     // Check required fields
-    if (!empty($id) && !empty($username) && !empty($name) && !empty($dep) && !empty($email) && !empty($phone) && !empty($password)){
+    if (!empty($id) && !empty($name) && !empty($email) && !empty($SUname) && !empty($SUemail) && !empty($type) && !empty($password)){
       // pass
       // Check email
       if (filter_var($email, FILTER_VALIDATE_EMAIL) === false){
@@ -37,8 +37,8 @@
         // var_dump($hashedPwd);
 
         // Insert user into database
-        $sql = "INSERT INTO `student` (`student_id`, `student_username`, `student_pwd`, `student_department`, `student_name`, `student_email`, `student_phone`)
-        VALUES ('$id', '$username', '$hashedPwd', '$dep', '$name', '$email', '$phone')";
+        $sql = "INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_supervisor`, `user_supervisor_email`, `user_type`, `user_pwd`)
+        VALUES ('$id', '$name', '$email', '$SUname', '$SUemail', '$type', '$hashedPwd')";
 
         if (mysqli_query($conn, $sql)){
           $msg = "Register Successfull <a href='login.php' class='black-text'>Login</a>";
@@ -71,60 +71,54 @@
             <span class="card-title center-align">User Registration Form</span>
             <div class="row">
               <form class="col s12" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" novalidate>
+                
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">credit_card</i>
                     <input type="text" id="id" name="id" value="<?php echo isset($_POST['id']) ? $id : ''; ?>">
-                    <label for="id">Your User Id</label>
+                    <label for="id">User ID (Roll Number for Internal Users, Affiliation Number for External Users)</label>
                   </div>
-                </div>
-                <!-- <div class="row">
-                  <div class="input-field">
-                    <i class="material-icons prefix">face</i>
-                    <input type="text" id="name" name="username" value="
-                    <!-- <?php echo isset($_POST['username']) ? $username : ''; ?>"> -->
-                    <label for="name">Your Username</label>
-                  </div>
-                </div> -->
+                
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
                     <input type="text" id="name" name="name" value="<?php echo isset($_POST['name']) ? $name : ''; ?>">
-                    <label for="name">Your Full Name</label>
+                    <label for="name">Full Name</label>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="input-field">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input type="text" id="supervisorname" name="supervisorname" value="<?php echo isset($_POST['supervisorname']) ? $supervisorname : ''; ?>">
-                    <label for="name">Supervisor Name</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field">
-                    <i class="material-icons prefix">school</i>
-                    <select name="department">
-                      <option disabled selected>Please Select</option>
-                      <option value="FTMK"></option>
-                      <option value="FKE"> SCEE</option>
-                      <option value="FKEKK">SE</option>
-                    </select>
-                  </div>
-                </div>
+
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">email</i>
                     <input type="email" id="email" name="email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>">
-                    <label for="email">Your Email</label>
+                    <label for="email">Email</label>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="input-field">
-                    <i class="material-icons prefix">local_phone</i>
-                    <input type="text" id="phone" name="phone" value="<?php echo isset($_POST['phone']) ? $phone : ''; ?>">
-                    <label for="phone">Your Phone</label>
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" id="SUname" name="SUname" value="<?php echo isset($_POST['SUname']) ? $SUname : ''; ?>">
+                    <label for="SUname">Superivisor Name</label>
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <input type="SUemail" id="SUemail" name="email" value="<?php echo isset($_POST['SUemail']) ? $SUemail : ''; ?>">
+                    <label for="SUemail">Superivisor Email</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" id="type" name="type" value="<?php echo isset($_POST['type']) ? $type : ''; ?>">
+                    <label for="type">Type (Internal/Extenal/Industrial)</label>
+                  </div>
+                </div>
+
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">lock</i>
@@ -132,12 +126,14 @@
                     <label for="userid">Your password</label>
                   </div>
                 </div>
+                
                 <div class="row">
                   <p class="center-align">
                     Already register? <a href="login.php">Login</a><br><br>
                     <button type="submit" class="waves-effect waves-light btn blue" name="submit">Register</button>
                   </p>
                 </div>
+                
               </form>
             </div>
           </div>

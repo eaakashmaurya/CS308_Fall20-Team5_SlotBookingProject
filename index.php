@@ -30,16 +30,9 @@
                 <!-- <div><?php echo $row['Equipment']; ?></div> -->
                 <div><?php echo $row['Model']; ?></div>
                 <br>
-
-                <?php if ($row['equip_status'] == 'Available'): ?>
                   <div class="center">
                     <a href="bookslots.php?id=<?php echo $row['equip_id']; ?>" class="btn blue">Book</a>
                   </div>
-                <?php else: ?>
-                  <div class="center">
-                    <a href='' class='btn disabled'>Book</a>
-                  </div>
-                <?php endif ?>
               </div>
             </div>
           </div>
@@ -47,14 +40,13 @@
         </div>
       </div>
 
-
         <div class="row">
           <ul class="collection with-header z-depth-1">
             <li class="collection-header blue white-text">
               <i class="fas fa-info-circle"></i> Notification
             </li>
             <li>
-              <p style="padding:0 1em;">Please <a href="register.php">register</a> first before you make any booking, 
+              <p style="padding:0 1em;">Please <a href="register.php">register</a> before making any booking, 
               once booked print the receipt and bring the receipt for payment at counter receptionist.</p>
             </li>
           </ul>
@@ -71,7 +63,7 @@
               <p style="padding:0 1em;">
                 <br><br>
                 <i class="fas fa-phone"></i>&nbsp;&nbsp;01905 267841<br>
-                <i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:c4dfed@iitmandi.ac.in">C4DFED@iitmandi.ac.in</a>
+                <i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:c4dfed@iitmandi.ac.in">C4DFED@iitmandi.ac.in</a> <br>
                 <i> <a href="contactus.php"> Contact Us </a> </i>
               </p>
             </li>
@@ -84,4 +76,3 @@
 <?php
   include 'footer.php';
 ?> 
-
