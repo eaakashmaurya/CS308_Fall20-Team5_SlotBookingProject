@@ -1,4 +1,4 @@
-# CS308_Slot-Booking-Project-TEAM-5-
+# CS308_Slot-Booking-Project-TEAM-5
 ## <center> The Slot Booking Project </center>
 
 ### <center> Design Document </center>
