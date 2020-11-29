@@ -68,9 +68,8 @@
             <li>
               <p style="padding:0 1em;">
                 <br><br>
-                <i class="fas fa-phone"></i>&nbsp;&nbsp;+606 555 2000<br>
-                <i class="fas fa-phone"></i>&nbsp;&nbsp;+606 331 6247<br>
-                <i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="#">iitmandi.ac.in</a>
+                <i class="fas fa-phone"></i>&nbsp;&nbsp;01905 267841<br>
+                <i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:c4dfed@iitmandi.ac.in">C4DFED@iitmandi.ac.in</a>
                 <i> <a href="contactus.php"> Contact Us </a> </i>
               </p>
             </li>
