@@ -31,7 +31,7 @@
         $msgClass = "red";
       } else {
         // dehashing the password
-        $pwdCheck = password_verify($_POST['password'], $row['user_pwd']);
+        $pwdCheck = ($_POST['password'] == $row['user_pwd']);
 
         if($pwdCheck == false) {
           $msg = "Invalid password";

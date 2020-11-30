@@ -24,12 +24,13 @@
   // handle the get request base on user id
   if (isset($_REQUEST['id'])) {
     $id = mysqli_real_escape_string($conn, $_REQUEST['id']);
-    
+    echo "$id";
     $sql = "SELECT * FROM `equipment` WHERE `equip_id`='$id'";
     $result = mysqli_query($conn, $sql);
     
     $row = mysqli_fetch_array($result);
 
+    
     $_SESSION['equip_id'] = $row['equip_id'];
     $_SESSION['Equipment'] = $row['Equipment'];
     $_SESSION['Model'] = $row['Model'];
@@ -61,11 +62,22 @@
       $msgClass = "red";
     }
     else {
+        $e_id = $_SESSION['equip_id'];
+        $user_id = $_SESSION['u_id'];
         $totalPrice = get_price($qauntity);
         $status = "Booked"; // Confirm this @Chandan
+        // echo "$e_id"; equipment id
+        // echo "$user_id"; user id
+        // echo "$date"; date of booking
+        // echo "$start";  start time
+        // echo "$end";    end time
+        // echo "$qauntity";  quantity
+        // echo "$status";   Booked or Available
+        // echo "$totalPrice";  Price of facilty usage
 
         $sql = "INSERT INTO `record` (`equip_id`, `user_id`, `record_date`, `record_start`, `record_end`, `record_qauntity`, `record_status`, `record_price`)
-        VALUES ('$_SESSION['equip_id']', '$_SESSION['u_id']', '$date', '$start', '$end', '$qauntity', '$status', '$totalPrice');";
+        VALUES ('$e_id','$user_id','$date','$start','$end','$qauntity','$status','$totalPrice');";
+        
         $result = mysqli_query($conn, $sql);
         
         if($result){
@@ -93,14 +105,16 @@
       </div>
     <?php endif ?>
     <form enctype="multipart/form-data" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="card-panel">
-      <div class="row">
-<!--
+    <div class="row">
         <div class="input-field col s6 m6">
           <input readonly type="text" id="equipid" name="equipid" value="<?php echo $_SESSION['equip_id']; ?>">
           <label for="id">Equipment id</label>
         </div>
-
-if direct call using session variables fails use this -->
+        <div class="input-field col s6 m6">
+          <input readonly type="text" id="userid" name="userid" value="<?php echo $_SESSION['u_id']; ?>">
+          <label for="id">User id</label>
+        </div>
+      </div>
       <div class="row">
         <div class="input-field col s6 m6">
           <input id="date" type="text" class="datepicker" name="date">

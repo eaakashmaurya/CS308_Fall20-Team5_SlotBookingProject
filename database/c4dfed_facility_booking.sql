@@ -52,7 +52,7 @@ INSERT INTO `admin` (`admin_id`, `admin_username`, `admin_email`, `admin_phone`,
 --
 -- Table containing information on all equipment
 --
-
+DROP TABLE IF EXISTS `equipment`;
 CREATE TABLE `equipment` (
   `equip_id` int(11) NOT NULL,
   PRIMARY KEY (`equip_id`),
@@ -61,8 +61,7 @@ CREATE TABLE `equipment` (
   `InternalUsers` int(11) DEFAULT NULL,
   `ExternalUsers` int(11) DEFAULT NULL,
   `IndustryUsers` int(11) DEFAULT NULL,
-  `RateType` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `RateType` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -119,16 +118,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `record`;
 CREATE TABLE `record` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1,
-  PRIMARY KEY (`record_id`),
-  `equip_id` int(11) FOREIGN KEY REFERENCES equipment(equip_id),
-  `user_id` varchar(15) FOREIGN KEY REFERENCES user(user_id),
-  `record_date` DATE NOT NULL, -- YYYY-MM-DD
-  `record_start` TIME NOT NULL, -- hh:mm:ss
-  `record_end` TIME NOT NULL, -- hh:mm:ss
-  `record_qauntity` int(11) NOT NULL, -- in hours/samples/litres as per need
+  `record_id` int(11) NOT NULL AUTO_INCREMENT,
+  `equip_id` int(11) ,
+  `user_id` varchar(15) ,
+  `record_date` DATE NOT NULL, 
+  `record_start` TIME NOT NULL, 
+  `record_end` TIME NOT NULL, 
+  `record_qauntity` int(11) NOT NULL, 
   `record_status` varchar(10) NOT NULL DEFAULT 'pending',
-  `record_price` int(11)
+  `record_price` int(11),
+  PRIMARY KEY (`record_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 
@@ -138,13 +137,13 @@ CREATE TABLE `record` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `user_id` varchar(15) NOT NULL, -- RollNumber/AffilationNumber
+  `user_id` varchar(15) NOT NULL, 
   PRIMARY KEY (`user_id`),
   `user_name` varchar(255) NOT NULL,
   `user_email` varchar(255) NOT NULL,
   `user_supervisor` varchar(255) NOT NULL,
   `user_supervisor_email` varchar(255) NOT NULL,
-  `user_type` varchar(15) NOT NULL, -- Internal/External/Industry
+  `user_type` varchar(15) NOT NULL, 
   `user_pwd` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

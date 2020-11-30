@@ -21,6 +21,12 @@
     $SUemail = mysqli_real_escape_string($conn, $_POST['SUemail']);
     $type = mysqli_real_escape_string($conn, $_POST['type']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+    echo "$id";
+    echo "$name";
+    echo "$SUname";
+    echo "$SUemail";
+    echo "$type";
+    echo "$password";
 
     // Check required fields
     if (!empty($id) && !empty($name) && !empty($email) && !empty($SUname) && !empty($SUemail) && !empty($type) && !empty($password)){
@@ -38,7 +44,7 @@
 
         // Insert user into database
         $sql = "INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_supervisor`, `user_supervisor_email`, `user_type`, `user_pwd`)
-        VALUES ('$id', '$name', '$email', '$SUname', '$SUemail', '$type', '$hashedPwd')";
+        VALUES ('$id', '$name', '$email', '$SUname', '$SUemail', '$type', '$password')";
 
         if (mysqli_query($conn, $sql)){
           $msg = "Register Successfull <a href='login.php' class='black-text'>Login</a>";
@@ -76,7 +82,7 @@
                   <div class="input-field">
                     <i class="material-icons prefix">credit_card</i>
                     <input type="text" id="id" name="id" value="<?php echo isset($_POST['id']) ? $id : ''; ?>">
-                    <label for="id">User ID (Roll Number for Internal Users, Affiliation Number for External Users)</label>
+                    <label for="id">User ID (Roll No. for Internal Users, Affiliation No. for Ex. Users)</label>
                   </div>
                 
                 <div class="row">
@@ -106,7 +112,7 @@
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">email</i>
-                    <input type="SUemail" id="SUemail" name="email" value="<?php echo isset($_POST['SUemail']) ? $SUemail : ''; ?>">
+                    <input type="email" id="SUemail" name="SUemail" value="<?php echo isset($_POST['SUemail']) ? $SUemail : ''; ?>">
                     <label for="SUemail">Superivisor Email</label>
                   </div>
                 </div>

@@ -11,13 +11,6 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body >
-<header id="masthead" class="site-header" role="banner"><div class="container">			    
-<div class="site-branding">
-
-<a href="https://c4dfed.com/" class="custom-logo-link" rel="home"><img width="150" height="100" src="https://c4dfed.com/wp-content/uploads/2018/12/cropped-IItmandi-e1544089564958-1.jpg" class="custom-logo" alt="C4DFED" data-attachment-id="1057" data-permalink="https://c4dfed.com/cropped-iitmandi-e1544089564958-1-jpg/" data-orig-file="https://c4dfed.com/wp-content/uploads/2018/12/cropped-IItmandi-e1544089564958-1.jpg" data-orig-size="150,100" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="cropped-IItmandi-e1544089564958-1.jpg" data-image-description="&lt;p&gt;https://c4dfed.com/wp-content/uploads/2018/12/cropped-IItmandi-e1544089564958-1.jpg&lt;/p&gt;
-" data-medium-file="https://c4dfed.com/wp-content/uploads/2018/12/cropped-IItmandi-e1544089564958-1.jpg" data-large-file="https://c4dfed.com/wp-content/uploads/2018/12/cropped-IItmandi-e1544089564958-1.jpg" /></a>
-          
-</div>
 
 <div class="wrapper">
     
