@@ -7,7 +7,7 @@ session_start();
   <head>
     <title> About | Slot Booking Project  </title>
   </head>
-
+  <!-- added styles -->
   <link rel="stylesheet" type = "text/css" href ="css/aboutus.css">
   <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
   
@@ -52,6 +52,7 @@ session_start();
 
         <div class="collapse navbar-collapse " id="myNavbar">
           	<ul class="nav navbar-nav">
+        <!-- added home and Contactus  -->
 				<li class="active" ><a href="index.php">Home</a></li>
 				
 				<li><a href="contactus.php">Contact Us</a></li>
