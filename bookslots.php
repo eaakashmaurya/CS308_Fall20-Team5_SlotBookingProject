@@ -65,7 +65,7 @@
         $e_id = $_SESSION['equip_id'];
         $user_id = $_SESSION['u_id'];
         $totalPrice = get_price($qauntity);
-        $status = "Booked"; // Confirm this @Chandan
+        $status = "Pending"; // Confirm this @Chandan
         // echo "$e_id"; equipment id
         // echo "$user_id"; user id
         // echo "$date"; date of booking
@@ -81,8 +81,8 @@
         $result = mysqli_query($conn, $sql);
         
         if($result){
-          echo "Booking Success and Record inserted";
-          $msg = "<a href='index.php' class='white-text'><i class='fas fa-arrow-circle-left'></i></a> Booking success";
+          echo "Booking Success and Record inserted <b><h5>You can see your bookings in the dashboard</h5><b>";
+          $msg = "<a href='index.php' class='white-text'><i class='fas fa-arrow-circle-left'></i></a> Booking success ,see your bookings in the dashboard ";
           $msgClass = "green";
         }
         else {

@@ -10,13 +10,13 @@
   if (isset($_POST['update'])) {
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $adminId = $_SESSION['admin_id'];
-    $sql = "UPDATE `record` SET record_status='approved' WHERE record_id='$id'";
+    $sql = "UPDATE `record` SET record_status='Booked' WHERE record_id='$id'";
 
     if (mysqli_query($conn, $sql)) {
       $msg = "Update Successfull";
       $msgClass = "green";
     } else {
-      $msg = "Error updating this recrod";
+      $msg = "Error updating this record";
       $msgClass = "red";
     }
   }
@@ -40,10 +40,11 @@ if (isset($_POST['change_price'])) {
   $id = mysqli_real_escape_string($conn, $_POST['id']);
   $newprice = mysqli_real_escape_string($conn, $_POST['newprice']);  
   $sql = "UPDATE `record` SET record_price='$newprice' WHERE record_id='$id'";
-
+  $_POST['newprice'] = '';
   if (mysqli_query($conn, $sql)) {
     $msg = "Update Discounted Price Successfull";
     $msgClass = "green";
+    
   } else {
     $msg = "Error updating this recrod";
     $msgClass = "red";
@@ -121,7 +122,7 @@ if (isset($_POST['change_price'])) {
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">credit_card</i>
-                    <input type="text" name="newprice" value="<?php echo isset($_POST['newprice']) ? $newprice : ''; ?>">
+                    <input type="text" name="newprice" value="<?php echo ''; ?>">
                     <label for="newprice">Discounted Price</label>
                 </div>  
                 
@@ -141,7 +142,7 @@ if (isset($_POST['change_price'])) {
                     <i class="fas fa-check"></i>
                   </button>
                 <?php else: ?>
-                  <button type='submit' name='update' class='blue-text btn1 tooltipped' data-position='right' data-tooltip='Approve' disabled>
+                  <button type='submit' name='update' class='blue-text btn1 tooltipped' data-position='right' data-tooltip='Approve' >
                     <i class="fas fa-check"></i>
                   </button>
                 <?php endif ?>
