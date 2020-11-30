@@ -133,7 +133,6 @@ if (isset($_POST['change_price'])) {
             </td>
 
             <!-- Code to change status -->
-
             <td>
               <form method='POST' action='records.php'>
                 <input type='hidden' name='id' value='<?php echo $row['record_id']; ?>'>
