@@ -7,7 +7,7 @@
 
 <!-- Update this file to show graphical statistics -->
 
-<div class="wrapper">
+<!-- <div class="wrapper">
   <section class="section">
     <div class="container2">
       <h5><i class="fas fa-chart-line"></i> Report analysis</h5>
@@ -19,7 +19,7 @@
             <canvas id="chart2"></canvas>
           </div>
         </div>
-      </div><br>
+      </div><br> -->
 
       <!-- <div class="divider"></div><br>
       <h5>Student Department</h5>

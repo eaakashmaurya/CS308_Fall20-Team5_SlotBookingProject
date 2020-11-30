@@ -1,19 +1,20 @@
 <?php
+  //include or require takes the code from *.php files to this file
   require 'session.php';
   include 'navbar.php';
   require_once 'model/db.php';
 
   $msg = $msgClass = '';
   function get_price($qauntity) {
-
+    //if user type is internal
     if(($_SESSION['u_type'])== "Internal") {
       $price = $_SESSION['InternalUsers'] * $qauntity;
     }
-
+    //if user type is external
     else if (($_SESSION['u_type'])== "External") {
       $price = $_SESSION['ExternalUsers'] * $qauntity;
     }
-
+    //if user type is industry
     else if (($_SESSION['u_type'])== "Industry") {
       $price = $_SESSION['IndustryUsers'] * $qauntity;
     }
@@ -23,14 +24,17 @@
 
   // handle the get request base on user id
   if (isset($_REQUEST['id'])) {
+    //escapes special characters from the id
     $id = mysqli_real_escape_string($conn, $_REQUEST['id']);
     echo "$id";
+    //sql statement to select equipments
     $sql = "SELECT * FROM `equipment` WHERE `equip_id`='$id'";
+    //perform query on $sql
     $result = mysqli_query($conn, $sql);
-    
+    //returns row in an associative array 
     $row = mysqli_fetch_array($result);
 
-    
+    //then euipment id in session will be stored as the equipment id in row and same for other
     $_SESSION['equip_id'] = $row['equip_id'];
     $_SESSION['Equipment'] = $row['Equipment'];
     $_SESSION['Model'] = $row['Model'];
@@ -65,7 +69,7 @@
         $e_id = $_SESSION['equip_id'];
         $user_id = $_SESSION['u_id'];
         $totalPrice = get_price($qauntity);
-        $status = "Pending"; // Confirm this @Chandan
+        $status = "Pending";
         // echo "$e_id"; equipment id
         // echo "$user_id"; user id
         // echo "$date"; date of booking
@@ -74,10 +78,10 @@
         // echo "$qauntity";  quantity
         // echo "$status";   Booked or Available
         // echo "$totalPrice";  Price of facilty usage
-
+        // Insert record into database
         $sql = "INSERT INTO `record` (`equip_id`, `user_id`, `record_date`, `record_start`, `record_end`, `record_qauntity`, `record_status`, `record_price`)
         VALUES ('$e_id','$user_id','$date','$start','$end','$qauntity','$status','$totalPrice');";
-        
+        //perform query on $sql
         $result = mysqli_query($conn, $sql);
         
         if($result){
@@ -99,6 +103,7 @@
   <div class="container">
     <h5><i class="fab fa-wpforms"></i> Booking information</h5>
     <div class="divider"></div><br>
+    <!-- $msg is not empty -->
     <?php if($msg != ''): ?>
       <div class="card-panel <?php echo $msgClass; ?>">
         <span class="white-text"><?php echo $msg; ?></span>
@@ -114,36 +119,48 @@
           <input readonly type="text" id="userid" name="userid" value="<?php echo $_SESSION['u_id']; ?>">
           <label for="id">User id</label>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6 m6">
-          <input id="date" type="text" class="datepicker" name="date">
-          <label for="date">Date</label>
-        </div>
-      </div>
+    </div>
 
-      <div class="row">
-        <div class="input-field col s6 m6">
-          <input id="start" type="text" class="timepicker" name="start">
-          <label for="start">Start time</label>
-        </div>
-        <div class="input-field col s6 m6">
-          <input id="end" type="text" class="timepicker" name="end">
-          <label for="end">End time</label>
-        </div>
+      
+    <div class="row">
+      <div class="input-field col s6 m6">
+        <input id="date" type="text" class="datepicker" name="date">
+        <label for="date">Date</label>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="input-field col s6 m6">
-          <input id="qauntity" type="text" class="price" name="qauntity">
-          <label for="qauntity">Qauntity</label>
-        </div>
+    <div class="row">
+      <div class="input-field col s6 m6">
+        <input id="start" type="text" class="timepicker" name="start">
+        <label for="start">Start time</label>
       </div>
+      <div class="input-field col s6 m6">
+        <input id="end" type="text" class="timepicker" name="end">
+        <label for="end">End time</label>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s6 m6">
+        <ul>
+        <li>Qauntity Type = <?php echo $_SESSION['RateType']; ?>
+        <li>Rate per qauntity = <<?php echo get_price(1); ?>
+        </ul>
+      </div>
+    </div>    
 
-      <div class="center">
-        <a href="index.php" class="btn btn-flat">Cancel</a>
-        <button type="submit" name="book" class="btn green">Book now</button>
+    <div class="row">
+      <div class="input-field col s6 m6">
+
+        <input id="qauntity" type="text" class="price" name="qauntity">
+        <label for="qauntity">Qauntity</label>
       </div>
+    </div>
+
+    <div class="center">
+      <a href="index.php" class="btn btn-flat">Cancel</a>
+      <button type="submit" name="book" class="btn green">Book now</button>
+    </div>
 
     </form>
   </div>

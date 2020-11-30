@@ -1,9 +1,10 @@
 <?php
+  // require takes the code from *.php files to this file
   require '../model/db.php';
   session_start();
-
+  // Error message and class
   $msg = $msgClass = '';
-
+  //if variable submit exist or not
   if (filter_has_var(INPUT_POST, 'submit')) {
     // Get form data
     $id = mysqli_real_escape_string($conn, $_POST['userid']);
@@ -11,25 +12,34 @@
     echo "$id";
     echo "$password";
     // Check if inputs are empty
+    //if not empty
     if (!empty($id) && !empty($password)){
-      // success
+      // if inputs are not empty then success
+      //sql statement for selecting admin id from admin
       $sql = "SELECT * FROM `admin` WHERE `admin_id`='$id'";
+      //perform query on sql
       $result = mysqli_query($conn, $sql);
+      //returns no. of rows from result
       $resultCheck = mysqli_num_rows($result);
+      //returns row in an associative array 
       $row = mysqli_fetch_assoc($result);
+      //if no. of rows is less than 1
       // echo $row['admin_password'];
       if ($resultCheck < 1) {
         // error, id not exist
         $msg = "Invalid Admin id or password";
         $msgClass = "red";
-      } else {
+      } //if the rows are greater than 1
+      else {
         // dehashing the password
         $pwdCheck = ($_POST['password'] ==  $row['admin_password']);
-
+        //if wrong password entered
         if($pwdCheck == false) {
           $msg = "Invalid password";
           $msgClass = "red";
-        } elseif ($pwdCheck == true) {
+        } //if pasword entered is right
+        elseif ($pwdCheck == true) {
+          //then admin id in session will be stored as the admin id in row and same for other
           $_SESSION['admin_id'] = $row['admin_id'];
           $_SESSION['admin_uname'] = $row['admin_username'];
           $_SESSION['admin_email'] = $row['admin_email'];
@@ -37,7 +47,8 @@
           header("location: index.php");
         }
       }
-    } else {
+    } //if inputs are empty
+    else {
       // failed ouput an error
       $msg = "Please fill in all fields";
       $msgClass = "red";
@@ -63,6 +74,7 @@
     <div class="box">
       <div class="row">
         <div class="col s12 m12">
+          <!-- if message is not empty -->
           <?php if($msg != ''): ?>
             <div id="msgBox" class="card-panel <?php echo $msgClass; ?>">
               <span class="white-text"><?php echo $msg; ?></span>
@@ -73,12 +85,14 @@
               <img id="admin_img" src="../img/logo.png" class="responsive-img">
             </div>
             <div class="card-content">
+              <!-- for admin login -->
               <span class="card-title center-align">Admin Login</span>
               <div class="row">
                 <form class="col s12" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" novalidate>
                   <div class="row">
                     <div class="input-field">
                       <i class="material-icons prefix">account_circle</i>
+                      <!-- enter admin id -->
                       <input type="text" id="userid" name="userid">
                       <label for="userid">Admin id</label>
                     </div>
@@ -86,6 +100,7 @@
                   <div class="row">
                     <div class="input-field">
                         <i class="material-icons prefix">lock</i>
+                        <!-- enter password -->
                       <input type="password" id="password" name="password">
                       <label for="userid">Password</label>
                     </div>

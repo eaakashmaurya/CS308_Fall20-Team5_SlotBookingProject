@@ -85,12 +85,14 @@
             <img id="userimg" src="img/user.png" class="circle responsive-img">
           </div>
           <div class="card-content">
+            <!-- for user login -->
             <span class="card-title center-align">User Login</span>
             <div class="row">
               <form class="col s12" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" novalidate>
                 <div class="row">
                   <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
+                    <!-- enter user id -->
                     <input type="text" id="userid" name="userid">
                     <label for="userid">User id</label>
                   </div>
@@ -98,12 +100,14 @@
                 <div class="row">
                   <div class="input-field">
                       <i class="material-icons prefix">lock</i>
+                    <!-- enter password -->
                     <input type="password" id="password" name="password">
                     <label for="userid">Your password</label>
                   </div>
                 </div>
                 <div class="row">
                   <p class="center-align">
+                    <!-- if new user or admin -->
                     New user? <a href="register.php">Register here</a><br>
                     Admin ? <a href="admin/">Login here</a><br><br>
                     <button type="submit" class="waves-effect waves-light btn blue" name="submit">Login</button>

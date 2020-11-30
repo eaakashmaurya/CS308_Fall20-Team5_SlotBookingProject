@@ -8,7 +8,7 @@ session_start();
   <head>
     <title> Home | Slot Booking Project </title>
   </head>
-
+  <!-- ADDED STYLES -->
   <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
 
   <link rel="stylesheet" type = "text/css" href ="css/index.css">
@@ -56,6 +56,7 @@ session_start();
 
         <div class="collapse navbar-collapse " id="myNavbar">
           	<ul class="nav navbar-nav">
+        <!-- added home about and contact -->
 				<li class="active" ><a href="index.php">Home</a></li>
 				<li><a href="aboutus.php">About</a></li>
 				<li><a href="contactus.php">Contact Us</a></li>
@@ -63,7 +64,7 @@ session_start();
           	</ul>
 
 		  	<ul class="nav navbar-nav navbar-right">
-				
+				  <!-- added usersignup adminsignup customerlogin and adminlogin -->
 					<li> <a href="customersignup.php"> User Sign-up</a></li>
 					<li> <a href="adminsignup.php"> Admin Sign-up</a></li>
              		<li> <a href="customerlogin.php"> User Login</a></li>

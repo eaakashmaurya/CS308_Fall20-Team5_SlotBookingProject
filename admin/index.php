@@ -1,5 +1,6 @@
 <?php
   session_start();
+  //include or require takes the code from *.php files to this file
   include 'navbar.php';
   require 'session.php';
 
@@ -21,8 +22,11 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
+                    //sql statement to count user id from user
                     $sql = "SELECT COUNT(user_id) AS total FROM `user`";
+                    //perform query on $sql
                     $result = mysqli_query($conn, $sql);
+                    //returns row in an associative array 
                     $row = mysqli_fetch_array($result);
                     echo $row['total'];
                   ?>
@@ -42,6 +46,7 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
+                    //sql statement to count record status from record where record status is pending
                     $sql = "SELECT COUNT(record_status) AS status FROM record WHERE record_status='pending'";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
@@ -63,6 +68,7 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
+                    //sql statement to count record status from record where record status is pending
                     $sql = "SELECT COUNT(record_status) as sub FROM record WHERE record_status<>'pending'";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
@@ -84,6 +90,7 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
+                    //sql statement to count equipid from equipment
                     $sql = "SELECT COUNT(equip_id) as total FROM equipment";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
@@ -113,6 +120,7 @@
                     <div class="col s6 grey-text text-darken-1">
                       <h4>
                         <?php
+                          //sql statement to count recordid from record
                           $sql = "SELECT COUNT(record_id) as total FROM record";
                           $result = mysqli_query($conn, $sql);
                           $row = mysqli_fetch_array($result);
@@ -136,6 +144,7 @@
                     <div class="col s6 grey-text text-darken-1">
                       <h4>
                         <?php
+                          //sql statement to count equipid from equipment
                           $sql = "SELECT COUNT(equip_id) as total FROM equipment";
                           $result = mysqli_query($conn, $sql);
                           $row = mysqli_fetch_array($result);
@@ -159,6 +168,7 @@
                     <div class="col s6 grey-text text-darken-1">
                       <h4>
                         <?php
+                          //sql statement to count adminid from admin
                           $sql = "SELECT COUNT(admin_id) as total FROM admin";
                           $result = mysqli_query($conn, $sql);
                           $row = mysqli_fetch_array($result);
@@ -180,6 +190,7 @@
                 </li>
                 <?php
                   // Total Equipments
+                  //sql statement to count equipid from equipment
                   $sql = "SELECT COUNT(equip_id) as total from `equipment`";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
@@ -207,6 +218,7 @@
                 <?php
 
                   // Total users
+                  //sql statement to count userid from user
                   $sql = "SELECT COUNT(user_id) as total from `user`";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);

@@ -1,5 +1,6 @@
 <?php
   session_start();
+  //include or require takes the code from *.php files to this file
   require 'session.php';
   include 'navbar.php';
   require '../model/db.php';
@@ -9,6 +10,7 @@
   // Form handling
   if (filter_has_var(INPUT_POST, 'submit')) {
     // Get form data for equipment
+    // filter the special characters from the id and all other
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $e_name = mysqli_real_escape_string($conn, $_POST['equipmentname']);
     $e_model = mysqli_real_escape_string($conn, $_POST['equipmentmodel']);
@@ -25,16 +27,18 @@
     //echo "$externalprice";
     
     // Check if the input is empty
+    //if id, name and email .. is not empty then
     if (!empty($id) && !empty($e_model) && !empty($internalprice) && !empty($externalprice) && !empty($industryprice)) {
-      // pass
+      // insert equipment into database
       $sql = "INSERT INTO `equipment` (`equip_id`, `Equipment`, `Model`,`InternalUsers`,`ExternalUsers`,`IndustryUsers`,`RateType`)
       VALUES ('$id', '$e_name', '$e_model','$internalprice','$externalprice','$industryprice','$rate')";
-
+      //if it returns some value then success
       if (mysqli_query($conn, $sql)) {
         // Success
         $msg = "Equipment added";
         $msgClass = "green";
-      } else {
+      }//if it doesnot return some value then error  
+      else {
         $msg = "Fail to add equipment error: " . $sql . "<br>" . mysqli_error($conn);
         $msgClass = "red";
       }
@@ -47,9 +51,11 @@
 
   // Delete form handling
   if (isset($_POST['delete'])) {
+    //escape special characters from id
     $id = mysqli_real_escape_string($conn, $_POST['id']);
+    //sql statement to delete from equipment
     $sql = "DELETE FROM `equipment` WHERE `equip_id`='$id'";
-
+    //perform query on $sql
     if (mysqli_query($conn, $sql)) {
       $msg = "Delete Successfull";
       $msgClass = "green";
@@ -85,6 +91,7 @@
       <!-- Equipment table list -->
       <table id="myTable" class="responsive-table highlight centered">
         <thead class="blue darken-2 white-text">
+          <!-- to reppresent the following data in the table  -->
           <tr class="myHead">
             <th>#</th>
             <th>Equipment id</th>
@@ -100,6 +107,7 @@
         <tbody>
           <?php
             $i = 1;
+            //sql statement to select equipment
             $sql = "SELECT * FROM `equipment`";
             $result = mysqli_query($conn, $sql);
 
@@ -137,6 +145,7 @@
           <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="row">
               <div class="input-field col s12">
+                <!-- enter equipment id -->
                 <input id="id" type="text" name="id">
                 <label for="id">Equipment Id</label>
               </div>

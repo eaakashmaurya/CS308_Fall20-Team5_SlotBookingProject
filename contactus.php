@@ -7,7 +7,7 @@ session_start();
   <head>
     <title> Contact | Slot Booking Project </title>
   </head>
-
+  <!-- ADDED STYLES -->
   <link rel="stylesheet" type = "text/css" href ="css/contactus.css">
   <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
   
@@ -31,7 +31,7 @@ session_start();
           document.getElementById("myBtn").style.display = "none";
         }
       }
-
+      
       function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -52,6 +52,7 @@ session_start();
 
         <div class="collapse navbar-collapse " id="myNavbar">
           	<ul class="nav navbar-nav">
+        <!-- added home and about  -->
 				<li class="active" ><a href="index.php">Home</a></li>
 				<li><a href="aboutus.php">About</a></li>
 				
