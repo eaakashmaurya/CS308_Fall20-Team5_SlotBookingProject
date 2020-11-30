@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Home</title>
+  <!-- added style  -->
   <link rel="stylesheet" href="../css/materialize.min.css">
   <script src="../js/fontawesome-all.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,6 +16,7 @@
     <nav class="blue darken-2 hide-on-med-and-up" role="navigation">
       <div class="nav-wrapper container">
         <ul class="right hide-on-med-and-down">
+          <!-- added home login and register  -->
           <li><a href="index.php">Home</a></li>
           <li><a href="login.php">Login</a></li>
           <li><a href="register.php">Register</a></li>
@@ -37,6 +39,7 @@
               </a>
             </div>
           </li>
+          <!-- for home, users, equipment, report and logout  -->
           <li><a href="index.php"><i class="fas fa-home"></i>&nbsp  Home</a></li>
           <li><a href="users.php"><i class="fas fa-users"></i>&nbsp  Users</a></li>
           <li><a href="equipment.php"><i class="fas fa-box"></i>&nbsp  Equipment</a></li>
@@ -62,6 +65,7 @@
         </a>
       </div>
     </li>
+    <!-- for home, record, equipment, user, admin, report, login and logout  -->
     <li><a href="index.php"><i class="fas fa-home"></i>&nbsp  Home</a></li>
     <li><a href="records.php"><i class="fas fa-book"></i>&nbsp  Record</a></li>
     <li><a href="equipment.php"><i class="fas fa-box"></i>&nbsp  Equipment</a></li>
