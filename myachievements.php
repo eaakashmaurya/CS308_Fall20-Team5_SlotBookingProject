@@ -8,7 +8,7 @@ session_start();
   <head>
     <title> Home | Slot Booking Project </title>
   </head>
-
+  <!-- ADDED STYLES -->
   <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
 
   <link rel="stylesheet" type = "text/css" href ="css/index.css">
@@ -26,6 +26,7 @@ session_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <!-- link to go bookslot -->
           <a class="navbar-brand" href="bookslots.php">Book Slots</a>
         </div>
 
