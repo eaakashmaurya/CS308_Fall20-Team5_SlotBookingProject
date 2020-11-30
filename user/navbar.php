@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Home</title>
+  <!-- added style  -->
   <link rel="stylesheet" href="../css/materialize.min.css">
   <script src="../js/fontawesome-all.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,6 +16,7 @@
     <nav class="blue darken-2 hide-on-med-and-up" role="navigation">
       <div class="nav-wrapper container">
         <ul class="right hide-on-med-and-down">
+          <!-- added home login and register  -->
           <li><a href="../index.php">Home</a></li>
           <li><a href="../login.php">Login</a></li>
           <li><a href="../register.php">Register</a></li>
@@ -43,9 +45,12 @@
           </li>
           <li><a href="index.php"><i class="fas fa-info-circle"></i>&nbsp  Status</a></li>
           <li><a href="../index.php"><i class="fas fa-home"></i>&nbsp  Home</a></li>
+          <!-- handle the get session base on user id -->
           <?php if (isset($_SESSION['u_id'])): ?>
+            <!-- for logout  -->
             <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Logout</a></li>
           <?php else: ?>
+            <!-- for login -->
             <li><a href="../login.php"><i class="fas fa-sign-in-alt"></i>&nbsp Login</a></li>
           <?php endif ?>
         </ul>
@@ -74,13 +79,16 @@
         </div>
       </div>
     </li>
+    <!-- added Status Home and Publications -->
     <li><a href="index.php"><i class="fas fa-info-circle"></i>&nbsp  Status</a></li>
     <li><a href="../index.php"><i class="fas fa-home"></i>&nbsp  Home</a></li>
     <li><a href="../myachievements.php"><i class="fas fa-trophy"></i>&nbsp Publications</a></li>
   
     <?php if (isset($_SESSION['u_id'])): ?>
+      <!-- for logout  -->
       <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Logout</a></li>
     <?php else: ?>
+      <!-- for login  -->
       <li><a href="../login.php"><i class="fas fa-sign-in-alt"></i>&nbsp Login</a></li>
     <?php endif ?>
   </ul>
