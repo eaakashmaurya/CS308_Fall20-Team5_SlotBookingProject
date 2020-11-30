@@ -1,4 +1,5 @@
 <?php
+  //include or require takes the code from *.php files to this file
   session_start();
   require 'session.php';
   include 'navbar.php';
@@ -8,10 +9,13 @@
 
   // handle the get request base on user id
   if (isset($_REQUEST['id'])) {
+    //escape special characters from id
     $id = mysqli_real_escape_string($conn, $_REQUEST['id']);
+    //sql statement to select admin
     $sql = "SELECT * FROM `admin` WHERE `admin_id`='$id'";
+    //perform query on $sql  
     $result = mysqli_query($conn, $sql);
-
+    //returns row in an associative array
     $row = mysqli_fetch_array($result);
   }
 
@@ -19,6 +23,7 @@
   if (filter_has_var(INPUT_POST, 'submit')){
     // Get form data
     // Admin's data
+    // filter the special characters from the id and all other
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -26,6 +31,7 @@
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     // Check required fields
+    //if id, name and email .. is not empty then
     if (!empty($id) && !empty($username) && !empty($email) && !empty($phone) && !empty($password)){
       // pass
       // Hashing the password
@@ -33,8 +39,9 @@
       // var_dump($hashedPwd);
 
       // Insert user into database
+      
       $sql = "UPDATE `admin` SET admin_id='$id', admin_username='$username', admin_email='$email', admin_phone='$phone', admin_password='$hashedPwd' WHERE admin_id='$id'";
-
+      //if it returns some value then success
       if (mysqli_query($conn, $sql)){
         $msg = "Update Successfull";
         $msgClass = "green";
@@ -42,7 +49,8 @@
         $msg = "Update error: " . $sql . "<br>" . mysqli_error($conn);
         $msgClass = "red";
       }
-    } else {
+    }//if it doesnot return some value then error 
+    else {
       // failed
       $msg = "Please fill in all fields";
       $msgClass = "red";
@@ -67,6 +75,7 @@
         <div class="row">
           <div class="input-field">
             <i class="material-icons prefix">credit_card</i>
+            <!-- enter admin id -->
             <input type="text" id="id" name="id" value="<?php echo $row['admin_id']; ?>">
             <label for="id">Admin Id</label>
           </div>
