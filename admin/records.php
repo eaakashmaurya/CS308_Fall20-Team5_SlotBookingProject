@@ -92,7 +92,46 @@
               <!-- Modal Structure -->
               <div id="<?php echo $row['record_id']; ?>" class="modal">
                 <div class="modal-content">
-                  <img class="responsive-img" src="<?php echo '../'.$row['record_item']; ?>" alt="test">
+                  <!-- <img class="responsive-img" src="<?php echo '../'.$row['record_item']; ?>" alt="test"> -->
+                  <table id="equipmentTable" class="responsive-table">
+                  <thead class="blue darken-2 white-text">
+                    <tr class="myHead">
+                    <th>Equipment Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $e_id = $row['equip_id'];
+                    // echo "$e_id";
+                    $sql = "SELECT * FROM `equipment` WHERE `equip_id`='$e_id'";
+                    $result1 = mysqli_query($conn, $sql);
+                    
+                    $row1 = mysqli_fetch_array($result1);
+
+                  ?>
+                  <tr>
+                    <td> <?php echo "Equipment ID :- "." ".$row1['equip_id']; ?></td>
+                  </tr>
+                  <tr>
+                    <td> <?php echo "Equipment Name :- "." ".$row1['Equipment']; ?></td>
+                  </tr>
+                  <tr>
+                    <td> <?php echo "Equipment Model :- "." ".$row1['Model']; ?></td>
+                  </tr>
+                  <tr>
+                    <td> <?php echo "Price for Internal Users :- "." ".$row1['InternalUsers']; ?></td>
+                  </tr>
+                  <tr>
+                    <td><?php echo "Price for External Users :- "." ".$row1['ExternalUsers']; ?></td>
+                  </tr>
+                  <tr>
+                    <td><?php echo "Price for Industry Users :- "." ".$row1['IndustryUsers']; ?></td>
+                  </tr>
+                  <tr>
+                    <td><?php echo "Rate Type :- "." ".$row1['RateType']; ?></td>
+                  </tr>
+                  </tbody>
+                  </table>
                 </div>
               </div>
               <a class="modal-trigger"  href="<?php echo '#'.$row['record_id']; ?>">View</a>
@@ -100,7 +139,7 @@
             <td><?php echo $row['user_id']; ?></td>
             <td><?php echo $row['equip_id']; ?></td>
             <td><?php echo $row['record_status']; ?></td>
-            <!-- <td><?php echo $row['record_approved_by']; ?></td> -->
+            
             <td>
               <form method='POST' action='records.php'>
                 <input type='hidden' name='id' value='<?php echo $row['record_id']; ?>'>

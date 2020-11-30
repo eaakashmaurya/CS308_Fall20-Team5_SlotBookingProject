@@ -96,9 +96,10 @@
                   <th>Start</th>
                   <th>End</th>
                   <th>Price</th>
+                  <th>Expected Bill</th>
                   <th>Equipment id</th>
                   <th>Status</th>
-                  <!-- <th>Subscription</th> -->
+                  
                 </tr>
               </thead>
               <tbody>
@@ -113,6 +114,61 @@
                   <td><?php echo $row['record_start']; ?></td>
                   <td><?php echo $row['record_end']; ?></td>
                   <td><?php echo $row['record_price']; ?></td>
+                  <td>
+                    <!-- Modal Structure -->
+                    <div id="<?php echo $row['record_id']; ?>" class="modal">
+                      <div class="modal-content">
+                        <!-- <img class="responsive-img" src="<?php echo '../'.$row['record_item']; ?>" alt="test"> -->
+                        <table id="equipmentTable" class="responsive-table">
+                        <thead class="blue darken-2 white-text">
+                          <tr class="myHead">
+                          <th>Equipment Details</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                          $e_id = $row['equip_id'];
+                          // echo "$e_id";
+                          $sql = "SELECT * FROM `equipment` WHERE `equip_id`='$e_id'";
+                          $result1 = mysqli_query($conn, $sql);
+                          
+                          $row1 = mysqli_fetch_array($result1);
+
+                      ?>
+                      <tr>
+                        <td> <?php echo "Booking ID :- "." ".$row['record_id']; ?></td>
+                      </tr>
+                      <tr>
+                        <td> <?php echo "Equipment Name :- "." ".$row1['Equipment']; ?></td>
+                      </tr>
+                      <tr>
+                        <td> <?php echo "Equipment Model :- "." ".$row1['Model']; ?></td>
+                      </tr>
+                      <tr>
+                        <td> <?php if(($_SESSION['u_type'])== "Internal"):  echo "Price for Internal Users :- "." ".$row1['InternalUsers']; ?><?php endif ?></td>
+                      </tr>
+                      <tr>
+                        <td><?php if(($_SESSION['u_type'])== "External"):  echo "Price for External Users :- "." ".$row1['ExternalUsers']; ?><?php endif ?></td>
+                      </tr>
+                      <tr>
+                        <td><?php  if(($_SESSION['u_type'])== "Industry"):  echo "Price for Industry Users :- "." ".$row1['IndustryUsers']; ?><?php endif ?></td>
+                      </tr>
+                      
+                      <tr>
+                        <td><?php echo "Rate Type :- "." ".$row1['RateType']; ?></td>
+                      </tr>
+                      <tr>
+                        <td><?php echo "Quantity :- "." ".$row['record_qauntity']; ?></td>
+                      </tr>
+                      <!-- <tr>
+                        <td><?php echo "Usage :- "." ".$row['record_end']-$row['record_start']; ?></td>
+                      </tr> -->
+                      </tbody>
+                      </table>
+                    </div>
+                    </div>
+                    <a class="modal-trigger"  href="<?php echo '#'.$row['record_id']; ?>">View</a>
+                  </td>
                   <td><?php echo $row['equip_id']; ?></td>
                   <td><?php echo $row['record_status']; ?></td>
                   <!-- <td><?php echo $row['record_sub']; ?></td> -->
@@ -128,7 +184,7 @@
           </div>
           <div class="collapsible-body">
             <p><span class="grey-text">Name:</span> <?php echo strtoupper($_SESSION['u_name']); ?></p>
-            <!-- <p><span class="grey-text">Phone:</span> <?php echo $_SESSION['u_phone']; ?></p> -->
+            
             <p><span class="grey-text">Email:</span> <?php echo $_SESSION['u_email']; ?></p>
             <a href="user_edit.php?id=<?php echo $_SESSION['u_id']; ?>" class="btn1"><i class="fas fa-pencil-alt"></i>&nbsp Edit</a>
           </div>
