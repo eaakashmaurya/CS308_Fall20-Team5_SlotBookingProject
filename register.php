@@ -13,7 +13,7 @@
 
   // Check for submit
   if (filter_has_var(INPUT_POST, 'submit')){
-    // Get form data
+    // filter the special characters from the id and all other
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -21,6 +21,7 @@
     $SUemail = mysqli_real_escape_string($conn, $_POST['SUemail']);
     $type = mysqli_real_escape_string($conn, $_POST['type']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+    //print id and all other
     //echo "$id";
     //echo "$name";
     //echo "$SUname";
@@ -29,14 +30,16 @@
     //echo "$password";
 
     // Check required fields
+    //if id, name and email is not empty then 
     if (!empty($id) && !empty($name) && !empty($email) && !empty($SUname) && !empty($SUemail) && !empty($type) && !empty($password)){
       // pass
-      // Check email
+      // Check email entered is wrong
       if (filter_var($email, FILTER_VALIDATE_EMAIL) === false){
         // failed
         $msg = "Please use a valid email";
         $msgClass = "red";
-      } else {
+      }// if email entered is right
+      else {
         // pass
         // Hashing the password
         $hashedPwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -45,15 +48,16 @@
         // Insert user into database
         $sql = "INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_supervisor`, `user_supervisor_email`, `user_type`, `user_pwd`)
         VALUES ('$id', '$name', '$email', '$SUname', '$SUemail', '$type', '$password')";
-
+        //if it returns some value then success
         if (mysqli_query($conn, $sql)){
           $msg = "Register Successfull <a href='login.php' class='black-text'>Login</a>";
           $msgClass = "green";
-        } else {
+        }//if it doesnot return some value then error
+        else {
           $msg = "Register error: " . $sql . "<br>" . mysqli_error($conn);
           $msgClass = "red";
         }
-      }
+      }//if id, name and email is empty then
     } else {
       // failed
       $msg = "Please fill in all fields";
@@ -67,6 +71,7 @@
   <div class="box">
     <div class="row">
       <div class="col s12 m12">
+        <!-- $msg is not empty -->
         <?php if($msg != ''): ?>
           <div id="msgBox" class="card-panel <?php echo $msgClass; ?>">
             <span class="white-text"><?php echo $msg; ?></span>

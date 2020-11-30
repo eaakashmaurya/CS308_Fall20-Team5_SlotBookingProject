@@ -1,6 +1,7 @@
 <?php
   session_start();
   // require 'session.php';
+  //include or require takes the code from *.php files to this file
   include 'navbar.php';
   require 'model/db.php';
 
@@ -11,32 +12,40 @@
 
   // Error message and class
   $msg = $msgClass = '';
-
+  //if variable submit exist or not
   if (filter_has_var(INPUT_POST, 'submit')) {
     // Get form data
     $id = mysqli_real_escape_string($conn, $_POST['userid']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    // Check if inputs are empty
+    // Check if the inputs are empty or not
+    //if not empty 
     if (!empty($id) && !empty($password)){
-      // success
+      // if inputs are not empty then success
+      //sql statement for selecting user ids from user
       $sql = "SELECT * FROM `user` WHERE `user_id`='$id'";
+      //perform query on sql
       $result = mysqli_query($conn, $sql);
+      //returns no. of rows from result
       $resultCheck = mysqli_num_rows($result);
+      //returns row in an associative array 
       $row = mysqli_fetch_assoc($result);
-
+      //if no. of rows is less than 1
       if ($resultCheck < 1) {
         // error, id not exist
         $msg = "Invalid user Id or password";
         $msgClass = "red";
+        //if the rows are greater than 1
       } else {
         // dehashing the password
         $pwdCheck = ($_POST['password'] == $row['user_pwd']);
-
+        //if wrong password entered
         if($pwdCheck == false) {
           $msg = "Invalid password";
           $msgClass = "red";
-        } elseif ($pwdCheck == true) {
+        }//if pasword entered is right 
+        elseif ($pwdCheck == true) {
+          //then user id in session will be stored as the user id in row and same for other
           $_SESSION['u_id'] = $row['user_id'];
           $_SESSION['u_name'] = $row['user_name'];
           $_SESSION['u_email'] = $row['user_email'];
@@ -47,7 +56,9 @@
           header("location: index.php");
         }
       }
-    } else {
+    } 
+    //if inputs are empty
+    else {
       // failed ouput an error
       $msg = "Please fill in all fields";
       $msgClass = "red";
@@ -63,6 +74,7 @@
   <div class="box">
     <div class="row">
       <div class="col s12 m12">
+        <!-- if message is not empty -->
         <?php if($msg != ''): ?>
           <div id="msgBox" class="card-panel <?php echo $msgClass; ?>">
             <span class="white-text"><?php echo $msg; ?></span>
