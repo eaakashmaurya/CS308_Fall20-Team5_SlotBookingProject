@@ -1,5 +1,6 @@
 <?php
   session_start();
+  //include or require takes the code from *.php files to this file
   require 'session.php';
   include 'navbar.php';
   require '../model/db.php';
@@ -9,6 +10,7 @@
   // Form handling
   if (filter_has_var(INPUT_POST, 'submit')) {
     // Get form data for Admin
+    // filter the special characters from the id and all other
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -16,20 +18,23 @@
     // $hashedPwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $hashedPwd = mysqli_real_escape_string($conn, $_POST['password']);
     // Check if the input is empty
+    //if id, name and email .. is not empty then
     if (!empty($id) && !empty($username) && !empty($email) && !empty($phone)) {
-      // pass
+      // sql statement to add admin into database
       $sql = "INSERT INTO `admin` (`admin_id`, `admin_username`, `admin_email`, `admin_phone`, `admin_password`)
       VALUES ('$id', '$username', '$email', '$phone', '$hashedPwd')";
-
+      //if it returns some value then success
       if (mysqli_query($conn, $sql)) {
         // Success
         $msg = "Admin added";
         $msgClass = "green";
-      } else {
+      } //if it doesnot return some value then error 
+      else {
         $msg = "Fail to add admin error: " . $sql . "<br>" . mysqli_error($conn);
         $msgClass = "red";
       }
-    } else {
+    } 
+    else {
       // failed
       $msg = "Please fill in all fields";
       $msgClass = "red";
@@ -38,9 +43,11 @@
 
   // Delete form handling
   if (isset($_POST['delete'])) {
+    ////escape special characters from id
     $id = mysqli_real_escape_string($conn, $_POST['id']);
+    //sql statement to delete from admin
     $sql = "DELETE FROM `admin` WHERE `admin_id`='$id'";
-
+    //perform query on $sql
     if (mysqli_query($conn, $sql)) {
       $msg = "Delete Successfull";
       $msgClass = "green";
@@ -63,6 +70,7 @@
       <br>
       <div class="row">
         <div class="col s12 m6">
+          <!-- addadmin -->
           <a href="#addadmin" class="btn green modal-trigger">Add New admin</a>
         </div>
         <div class="col s12 m6">
@@ -76,6 +84,7 @@
       <!-- Admin table list -->
       <table id="myTable" class="responsive-table highlight centered">
         <thead class="blue darken-2 white-text">
+          <!-- to reppresent the following data in the table  -->
           <tr class="myHead">
             <th>#</th>
             <th>Admin id</th>
@@ -88,6 +97,7 @@
         <tbody>
           <?php
             $i = 1;
+            //sql statement to select admin
             $sql = "SELECT * FROM `admin`";
             $result = mysqli_query($conn, $sql);
 
@@ -123,6 +133,7 @@
             <div class="row">
               <div class="input-field">
                 <i class="material-icons prefix">credit_card</i>
+                <!-- enter admin id -->
                 <input id="id" type="text" name="id">
                 <label for="id">Admin Id</label>
               </div>
