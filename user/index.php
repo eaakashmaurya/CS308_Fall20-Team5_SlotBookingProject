@@ -86,6 +86,7 @@
                   <th>Qauntity</th>
                   <th>Status</th>
                   <th>Bill Ammount</th>
+                  <th>Remarks</th>
                 </tr>
               </thead>
               <tbody>
@@ -106,6 +107,7 @@
                   <td><?php echo $row['record_qauntity']; ?></td>
                   <td><?php echo $row['record_status']; ?></td>
                   <td><?php echo "Rs"." ".$row['record_price']; ?></td>
+                  <td><a href="../remarks.php"> view </a></td>
                 </tr>
               <?php endwhile ?>
               </tbody>

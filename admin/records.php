@@ -10,7 +10,7 @@
   if (isset($_POST['update'])) {
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $adminId = $_SESSION['admin_id'];
-    $sql = "UPDATE `record` SET record_status='Booked' WHERE record_id='$id'";
+    $sql = "UPDATE `record` SET record_status='/* Booked */' WHERE record_id='$id'";
 
     if (mysqli_query($conn, $sql)) {
       $msg = "Update Successfull";
@@ -91,6 +91,7 @@ if (isset($_POST['change_price'])) {
             <th>Qauntity</th>
             <th>Status</th>
             <th>Bill Ammount</th>
+            <th> Remarks </th>
             <th colspan="4" class="center">Actions</th>
           </tr>
         </thead>
@@ -112,7 +113,7 @@ if (isset($_POST['change_price'])) {
             <td><?php echo $row['record_qauntity']; ?></td>
             <td><?php echo $row['record_status']; ?></td>
             <td><?php echo "Rs"." ".$row['record_price']; ?></td>
-
+            <td><a href="../remarks.php"> view </a></td>
             <!-- Code to change price as per new discounted price -->
 
             <td>
