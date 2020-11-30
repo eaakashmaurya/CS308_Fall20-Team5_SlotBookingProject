@@ -23,10 +23,10 @@ Step 1. Download Xampp. You may use this :
 
 Step 2. Go to the folder where you have installed xampp. In windows, you can find it in C:/users/home/xampp
 
-Step3. Find the htdocs folder. You need to put this project in htdocs to run your project. 
+Step 3. Find the htdocs folder. You need to put this project in htdocs to run your project. 
 
-Step4. Fork this repo and clone it. Add this to your htdocs and run it like any simple html file in browser.Reload to see the changes.
+Step 4. Fork this repo and clone it. Add this to your htdocs and run it like any simple html file in browser.Reload to see the changes.
 
-Step5. Please also start xampp server.
+Step 5. Please also start xampp server.
 
-Step6. Open localhost/phpmydmin/ on your browser and upload our database "c4dfed_facility_booking" there by creating a new database and importing it from the codefiles "database/c4dfed_facility_booking.sql".
+Step 6. Open localhost/phpmydmin/ on your browser and upload our database "c4dfed_facility_booking" there by creating a new database and importing it from the codefiles "database/c4dfed_facility_booking.sql".

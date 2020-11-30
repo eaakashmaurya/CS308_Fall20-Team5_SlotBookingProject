@@ -99,23 +99,6 @@ UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `record`
---
--- DROP TABLE IF EXISTS `record`;
---CREATE TABLE `record` (
-  --`record_id` int(11) NOT NULL,
-  --`record_start` varchar(10) DEFAULT NULL,
---  `record_end` varchar(10) DEFAULT NULL,
- -- `record_price` int(11) DEFAULT NULL,
- -- `record_item` varchar(255) DEFAULT NULL,
-  --`record_status` varchar(10) NOT NULL DEFAULT 'pending',
-  --`record_sub` varchar(10) NOT NULL DEFAULT 'expired',
-  --`record_approved_by` varchar(15) NOT NULL DEFAULT 'pending',
-  --`student_id` varchar(15) NOT NULL,
---  `equip_id` varchar(15) NOT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 DROP TABLE IF EXISTS `record`;
 CREATE TABLE `record` (
   `record_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -147,19 +130,6 @@ CREATE TABLE `user` (
   `user_pwd` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Table structure for table `student`
---
---DROP TABLE IF EXISTS `student`;
---CREATE TABLE `student` (
---  `student_id` varchar(15) NOT NULL,
---  `student_username` varchar(15) NOT NULL,
-  --`student_pwd` char(70) NOT NULL,
-  --`student_name` varchar(255) NOT NULL,
-  --`student_department` varchar(5) NOT NULL,
-  --`student_email` varchar(30) NOT NULL,
-  --`student_phone` varchar(15) NOT NULL
---) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
