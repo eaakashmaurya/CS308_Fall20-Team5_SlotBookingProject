@@ -30,7 +30,6 @@
     
     $row = mysqli_fetch_array($result);
 
-    
     $_SESSION['equip_id'] = $row['equip_id'];
     $_SESSION['Equipment'] = $row['Equipment'];
     $_SESSION['Model'] = $row['Model'];
@@ -65,7 +64,7 @@
         $e_id = $_SESSION['equip_id'];
         $user_id = $_SESSION['u_id'];
         $totalPrice = get_price($qauntity);
-        $status = "Pending"; // Confirm this @Chandan
+        $status = "Pending";
         // echo "$e_id"; equipment id
         // echo "$user_id"; user id
         // echo "$date"; date of booking
@@ -114,36 +113,48 @@
           <input readonly type="text" id="userid" name="userid" value="<?php echo $_SESSION['u_id']; ?>">
           <label for="id">User id</label>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6 m6">
-          <input id="date" type="text" class="datepicker" name="date">
-          <label for="date">Date</label>
-        </div>
-      </div>
+    </div>
 
-      <div class="row">
-        <div class="input-field col s6 m6">
-          <input id="start" type="text" class="timepicker" name="start">
-          <label for="start">Start time</label>
-        </div>
-        <div class="input-field col s6 m6">
-          <input id="end" type="text" class="timepicker" name="end">
-          <label for="end">End time</label>
-        </div>
+      
+    <div class="row">
+      <div class="input-field col s6 m6">
+        <input id="date" type="text" class="datepicker" name="date">
+        <label for="date">Date</label>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="input-field col s6 m6">
-          <input id="qauntity" type="text" class="price" name="qauntity">
-          <label for="qauntity">Qauntity</label>
-        </div>
+    <div class="row">
+      <div class="input-field col s6 m6">
+        <input id="start" type="text" class="timepicker" name="start">
+        <label for="start">Start time</label>
       </div>
+      <div class="input-field col s6 m6">
+        <input id="end" type="text" class="timepicker" name="end">
+        <label for="end">End time</label>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s6 m6">
+        <ul>
+        <li>Qauntity Type = <?php echo $_SESSION['RateType']; ?>
+        <li>Rate per qauntity = <<?php echo get_price(1); ?>
+        </ul>
+      </div>
+    </div>    
 
-      <div class="center">
-        <a href="index.php" class="btn btn-flat">Cancel</a>
-        <button type="submit" name="book" class="btn green">Book now</button>
+    <div class="row">
+      <div class="input-field col s6 m6">
+
+        <input id="qauntity" type="text" class="price" name="qauntity">
+        <label for="qauntity">Qauntity</label>
       </div>
+    </div>
+
+    <div class="center">
+      <a href="index.php" class="btn btn-flat">Cancel</a>
+      <button type="submit" name="book" class="btn green">Book now</button>
+    </div>
 
     </form>
   </div>
