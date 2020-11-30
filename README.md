@@ -10,6 +10,11 @@ v1.0    | 09/11/20 | Zaidan Bhat (B18040) | Initial version
  | | | Chandan Prakash (B18050) | 
  | | | Kalyani Kumari (B18063) | 
  | | | Mohit Kumar (B18072) | 
+v2.0    | 30/11/20 | Zaidan Bhat (B18040) | Project Submission version
+ | | | Aakash Maurya (B18042) | 
+ | | | Chandan Prakash (B18050) | 
+ | | | Kalyani Kumari (B18063) | 
+ | | | Mohit Kumar (B18072) | 
 
 Technology - LAMP 
 
@@ -21,7 +26,7 @@ Step 1. Download Xampp. You may use this :
         <li>[Install xampp for linux](https://www.apachefriends.org/download.html) </li>
     </ul>
 
-Step 2. Go to the folder where you have installed xampp. In windows, you can find it in C:/users/home/xampp
+Step 2. Go to the folder where you have installed xampp. In windows, you can find it in C:/useHTMLome/xampp
 
 Step 3. Find the htdocs folder. You need to put this project in htdocs to run your project. 
 
