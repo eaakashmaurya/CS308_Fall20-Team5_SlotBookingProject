@@ -33,7 +33,7 @@
                 <!-- input id of the equipment -->
                 <input type="hidden" name="id" value="<?php echo $row['equip_id']; ?>">
                 <div><?php echo $row['equip_id']; ?></div>
-                <!-- <div><?php echo $row['Equipment']; ?></div> -->
+                <div><?php echo $row['Equipment']; ?></div>
                 <div><?php echo $row['Model']; ?></div>
                 <br>
                   <div class="center">

@@ -1,17 +1,14 @@
 <?php
   session_start();
-  //include or require takes the code from *.php files to this file
   require 'session.php';
   include 'navbar.php';
   require '../model/db.php';
-  // Error message and class
+
   $msg = $msgClass = '';
 
   // Approve Booking
   if (isset($_POST['update'])) {
-    //escapes special characters from the id
     $id = mysqli_real_escape_string($conn, $_POST['id']);
-    //store adminid
     $adminId = $_SESSION['admin_id'];
     $sql = "UPDATE `record` SET record_status='Booked' WHERE record_id='$id'";
 
@@ -26,9 +23,7 @@
 
   // Delete form handling
   if (isset($_POST['delete'])) {
-    //escapes special characters from the id
     $id = mysqli_real_escape_string($conn, $_POST['id']);
-    //sql statment to delete record from record
     $sql = "DELETE FROM `record` WHERE `record_id`='$id'";
 
     if (mysqli_query($conn, $sql)) {
@@ -42,11 +37,8 @@
 
 // Update with discounted price form handling
 if (isset($_POST['change_price'])) {
-  //escapes special characters from the id
   $id = mysqli_real_escape_string($conn, $_POST['id']);
-  //escapes special characters from the newprice
   $newprice = mysqli_real_escape_string($conn, $_POST['newprice']);  
-  //sql statment to update recordprice from record
   $sql = "UPDATE `record` SET record_price='$newprice' WHERE record_id='$id'";
   $_POST['newprice'] = '';
   if (mysqli_query($conn, $sql)) {
@@ -80,7 +72,6 @@ if (isset($_POST['change_price'])) {
         <div class="col s12 m6">
           <div class="input-field">
             <i class="material-icons prefix">search</i>
-            <!-- for search -->
             <input type="text" id="search">
             <label for="search">Search</label>
           </div>
@@ -89,7 +80,6 @@ if (isset($_POST['change_price'])) {
       <!-- Equipments table list -->
       <table id="myTable" class="responsive-table highlight centered">
         <thead class="blue darken-2 white-text">
-          <!-- to reppresent the following data row in the table  -->
           <tr class="myHead">
             <th>#</th>
             <th>Id</th>
@@ -101,18 +91,17 @@ if (isset($_POST['change_price'])) {
             <th>Qauntity</th>
             <th>Status</th>
             <th>Bill Ammount</th>
+            <th> Remarks </th>
             <th colspan="4" class="center">Actions</th>
           </tr>
         </thead>
         <tbody>
           <?php
             $i = 1;
-            //sql statment to select record
             $sql = "SELECT * FROM `record`";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)):
           ?>
-          <!-- to reppresent the following data cell in the table  -->
           <tr>
             <td><?php echo $i; $i++; ?></td>
             <td><?php echo $row['record_id']; ?></td>
@@ -124,7 +113,7 @@ if (isset($_POST['change_price'])) {
             <td><?php echo $row['record_qauntity']; ?></td>
             <td><?php echo $row['record_status']; ?></td>
             <td><?php echo "Rs"." ".$row['record_price']; ?></td>
-
+            <td><a href="../remarks.php"> view </a></td>
             <!-- Code to change price as per new discounted price -->
 
             <td>

@@ -58,16 +58,17 @@
               <h5>Add Publication</h5>
               <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
            
+             
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="recordid" type="text" name="recordid">
-                  <label for="recordid"> Record ID </label>
+                  <input id="userid" readonly type="text" name="userid" value="<?php echo $_SESSION['u_id']; ?>">
+                  <label for="userid"> User Id</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="userid" type="text" name="userid">
-                  <label for="userid"> User Id</label>
+                  <input readonly type="text" id="recordid" name="recordid" >
+                  <label for="recordid"> Record ID </label>
                 </div>
               </div>
               <div class="row">
