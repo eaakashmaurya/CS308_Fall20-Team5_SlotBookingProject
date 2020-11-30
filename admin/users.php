@@ -1,14 +1,17 @@
 <?php
   session_start();
+  //include or require takes the code from *.php files to this file
   require 'session.php';
   include 'navbar.php';
   require '../model/db.php';
-
+  // Error message and class
   $msg = $msgClass = '';
 
   // Delete form handling
   if (isset($_POST['delete'])) {
+    //escapes special characters from the id
     $id = mysqli_real_escape_string($conn, $_POST['id']);
+    //sql statement to delete user
     $sql = "DELETE FROM `user` WHERE `user_id`='$id'";
 
     if (mysqli_query($conn, $sql)) {
@@ -36,6 +39,7 @@
         <div class="col s12 m6">
           <div class="input-field">
             <i class="material-icons prefix">search</i>
+            <!-- enter for search -->
             <input type="text" id="search">
             <label for="search">Search</label>
           </div>
@@ -45,6 +49,7 @@
       <!-- Equipment table list -->
       <table id="myTable" class="responsive-table highlight centered">
         <thead class="blue darken-2 white-text">
+          <!-- to reppresent the following data row in the table  -->
           <tr class="myHead">
             <th>#</th>
             <th>Id</th>
@@ -59,10 +64,12 @@
         <tbody>
           <?php
             $i = 1;
+            //sql statment to select user
             $sql = "SELECT * FROM `user`";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)):
           ?>
+          <!-- to reppresent the following data cell in the table  -->
           <tr>
             <td><?php echo $i; $i++; ?></td>
             <td><?php echo $row['user_id']; ?></td>
