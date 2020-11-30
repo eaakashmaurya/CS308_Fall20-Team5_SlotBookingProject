@@ -1,19 +1,20 @@
 <?php
+  //include or require takes the code from *.php files to this file
   require 'session.php';
   include 'navbar.php';
   require_once 'model/db.php';
 
   $msg = $msgClass = '';
   function get_price($qauntity) {
-
+    //if user type is internal
     if(($_SESSION['u_type'])== "Internal") {
       $price = $_SESSION['InternalUsers'] * $qauntity;
     }
-
+    //if user type is external
     else if (($_SESSION['u_type'])== "External") {
       $price = $_SESSION['ExternalUsers'] * $qauntity;
     }
-
+    //if user type is industry
     else if (($_SESSION['u_type'])== "Industry") {
       $price = $_SESSION['IndustryUsers'] * $qauntity;
     }
@@ -23,13 +24,17 @@
 
   // handle the get request base on user id
   if (isset($_REQUEST['id'])) {
+    //escapes special characters from the id
     $id = mysqli_real_escape_string($conn, $_REQUEST['id']);
     echo "$id";
+    //sql statement to select equipments
     $sql = "SELECT * FROM `equipment` WHERE `equip_id`='$id'";
+    //perform query on $sql
     $result = mysqli_query($conn, $sql);
-    
+    //returns row in an associative array 
     $row = mysqli_fetch_array($result);
 
+    //then euipment id in session will be stored as the equipment id in row and same for other
     $_SESSION['equip_id'] = $row['equip_id'];
     $_SESSION['Equipment'] = $row['Equipment'];
     $_SESSION['Model'] = $row['Model'];
@@ -73,10 +78,10 @@
         // echo "$qauntity";  quantity
         // echo "$status";   Booked or Available
         // echo "$totalPrice";  Price of facilty usage
-
+        // Insert record into database
         $sql = "INSERT INTO `record` (`equip_id`, `user_id`, `record_date`, `record_start`, `record_end`, `record_qauntity`, `record_status`, `record_price`)
         VALUES ('$e_id','$user_id','$date','$start','$end','$qauntity','$status','$totalPrice');";
-        
+        //perform query on $sql
         $result = mysqli_query($conn, $sql);
         
         if($result){
@@ -98,6 +103,7 @@
   <div class="container">
     <h5><i class="fab fa-wpforms"></i> Booking information</h5>
     <div class="divider"></div><br>
+    <!-- $msg is not empty -->
     <?php if($msg != ''): ?>
       <div class="card-panel <?php echo $msgClass; ?>">
         <span class="white-text"><?php echo $msg; ?></span>
