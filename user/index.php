@@ -137,7 +137,7 @@
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['status']."</h5>";
                 ?>
-                <h5>Today and Upcoming Bookings</h5>
+                <h5>Upcoming Bookings</h5>
               </div>
               <div class="col s6 m6 icon blue-text">
                 <i class="fas fa-info-circle"></i>
