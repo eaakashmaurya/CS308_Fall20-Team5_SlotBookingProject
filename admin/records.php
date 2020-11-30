@@ -13,10 +13,6 @@
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     //store adminid
     $adminId = $_SESSION['admin_id'];
-<<<<<<< HEAD
-=======
-    //sql ststement to update record
->>>>>>> 7b6733c110c008c040f93144bbc03c77de1e4819
     $sql = "UPDATE `record` SET record_status='Booked' WHERE record_id='$id'";
 
     if (mysqli_query($conn, $sql)) {
