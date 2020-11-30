@@ -143,8 +143,8 @@
     <div class="row">
       <div class="input-field col s6 m6">
         <ul>
-        <li>Qauntity Type = <?php echo $_SESSION['RateType']; ?>
-        <li>Rate per qauntity = <<?php echo get_price(1); ?>
+        <li>Qauntity Type = <?php echo $_SESSION['RateType']; ?> </li>
+        <li>Rate per qauntity = <<?php echo get_price(1); ?> </li>
         </ul>
       </div>
     </div>    

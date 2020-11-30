@@ -72,7 +72,12 @@
                 <i class="fas fa-phone"></i>&nbsp;&nbsp;01905 267841<br>
                 <!-- email id for C4dfed -->
                 <i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:c4dfed@iitmandi.ac.in">C4DFED@iitmandi.ac.in</a> <br>
-                <i> <a href="contactus.php"> Contact Us </a> </i>
+                <i> <a href="contactus.php"> Contact Us </a> </i><br>
+                Account Details: <br>
+                1) NAME OF ACCOUNT HOLDER: Director, Indian Institute of Technology, MANDI – SRIC, (IIT MANDI – SRIC)<br>
+                2) BANK NAME: PUNJAB NATIONAL BANK, IIT KAMAND, MANDI, HP PIN – 175005, Ph. 01905-267094<br>
+                3) BANK ACCOUNT NUMBER: 0311000100958570     4) IFS CODE OF THE BRANCH: PUNB0731500<br>
+                5) MICR CODE OF BANK: 175024138              6) SWIFT CODE: PUNBINBBPAR
               </p>
             </li>
           </ul>

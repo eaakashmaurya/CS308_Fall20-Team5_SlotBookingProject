@@ -130,9 +130,7 @@ CREATE TABLE `user` (
   `user_pwd` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
-
--
+--
 -- Table structure for table `chat_message`
 --
 
@@ -181,3 +179,18 @@ ALTER TABLE `chat_message`
 --
 ALTER TABLE `login_details`
   MODIFY `login_details_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Table structure for table `achievements`
+--
+
+DROP TABLE IF EXISTS `achievements`;
+CREATE TABLE `achievements` (
+  `achievement_id` int(11) NOT NULL AUTO_INCREMENT,
+  `record_id` int(11) ,
+  `user_id` varchar(15) ,
+  `achievement_type` varchar(20) , -- Publication/Other
+  `details` varchar(255) ,
+  `other` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`achievement_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
