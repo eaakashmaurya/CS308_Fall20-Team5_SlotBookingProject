@@ -181,23 +181,3 @@ ALTER TABLE `chat_message`
 --
 ALTER TABLE `login_details`
   MODIFY `login_details_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Table structure for table `student`
---
---DROP TABLE IF EXISTS `student`;
---CREATE TABLE `student` (
---  `student_id` varchar(15) NOT NULL,
---  `student_username` varchar(15) NOT NULL,
-  --`student_pwd` char(70) NOT NULL,
-  --`student_name` varchar(255) NOT NULL,
-  --`student_department` varchar(5) NOT NULL,
-  --`student_email` varchar(30) NOT NULL,
-  --`student_phone` varchar(15) NOT NULL
---) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-=======
->>>>>>> 1bd1e8ace42f9aeb14bc817a96a3c26782bc1a12
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
