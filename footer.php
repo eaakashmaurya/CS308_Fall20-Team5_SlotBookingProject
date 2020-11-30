@@ -4,6 +4,7 @@
   <script src="js/chart.min.js"></script>
   <script src="js/init.js"></script>
   <script>
+    //function to get the date day month and year in different variables
     $(document).ready(function() {
       var todaysDate = new Date();
 
