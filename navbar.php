@@ -7,13 +7,14 @@
   <title>Home</title>
   <link rel="stylesheet" href="css/materialize.min.css">
   <script src="js/fontawesome-all.min.js"></script>
+  <!-- ADDED STYLES -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body >
 
 <div class="wrapper">
-    
+   <!-- added logo to the page --> 
   <nav class="blue"  role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">
@@ -21,8 +22,9 @@
       </a>
       <a href="#" class="brand-logo center"> C4DFED</a>
       <ul class="right hide-on-med-and-down black-text">
-      
+        <!-- if user already logiN -->
         <?php if(isset($_SESSION['u_id'])): ?>
+          <!-- added home dashboard and logout  -->
           <li class="active"><a href="index.php">Home</a></li>
           <li><a href="user/index.php">Dashboard</a></li>
           <li><a href="logout.php">Logout</a></li>
@@ -32,7 +34,7 @@
           <li><a href="login.php">Login</a></li>
         <?php endif ?>
       </ul>
-
+      <!-- added home dashboard and logout  -->
       <ul id="nav-mobile" class="side-nav">
         <?php if(isset($_SESSION['u_id'])): ?>
           <li><a href="index.php">Home</a></li>
@@ -49,6 +51,7 @@
     </div>
     
    </nav>
+   <!-- if user already logiN -->
   <?php if (isset($_SESSION['u_id'])): ?>
   <ul class="side-nav fixed">
     <li>
