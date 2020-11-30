@@ -9,7 +9,7 @@
   // Delete form handling
   if (isset($_POST['delete'])) {
     $id = mysqli_real_escape_string($conn, $_POST['id']);
-    $sql = "DELETE FROM `student` WHERE `student_id`='$id'";
+    $sql = "DELETE FROM `user` WHERE `user_id`='$id'";
 
     if (mysqli_query($conn, $sql)) {
       $msg = "Delete Successfull";
@@ -58,24 +58,24 @@
         <tbody>
           <?php
             $i = 1;
-            $sql = "SELECT * FROM `student`";
+            $sql = "SELECT * FROM `user`";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)):
           ?>
           <tr>
             <td><?php echo $i; $i++; ?></td>
-            <td><?php echo $row['student_id']; ?></td>
-            <!-- <td><?php echo $row['student_username']; ?></td> -->
-            <td><?php echo $row['student_name']; ?></td>
-            <td><?php echo $row['student_email']; ?></td>
-            <td><?php echo $row['student_phone']; ?></td>
+            <td><?php echo $row['user_id']; ?></td>
+            
+            <td><?php echo $row['user_name']; ?></td>
+            <td><?php echo $row['user_email']; ?></td>
+            <td><?php echo $row['user_supervisor']; ?></td>
             <td>
-              <a href='users_edit.php?id=<?php echo $row['student_id']; ?>' class='btn-flat blue-text tooltip' data-position='right' data-tooltip='Edit'><i class='fas fa-pencil-alt'></i></a>
+              <a href='users_edit.php?id=<?php echo $row['user_id']; ?>' class='btn-flat blue-text tooltip' data-position='right' data-tooltip='Edit'><i class='fas fa-pencil-alt'></i></a>
             </td>
             <td>
               <form method='POST' action='users.php'>
-                <input type='hidden' name='id' value="<?php echo $row['student_id'];?>">
-                <button type='submit' onclick='return confirm(`Delete this user <?php echo $row['student_id']; ?>?`);' name='delete' class='btn-flat red-text tooltipped' data-position='top' data-tooltip='Delete'>
+                <input type='hidden' name='id' value="<?php echo $row['user_id'];?>">
+                <button type='submit' onclick='return confirm(`Delete this user <?php echo $row['user_id']; ?>?`);' name='delete' class='btn-flat red-text tooltipped' data-position='top' data-tooltip='Delete'>
                   <i class='far fa-trash-alt'></i>
                 </button>
               </form>

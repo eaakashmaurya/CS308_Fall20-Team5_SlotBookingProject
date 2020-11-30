@@ -21,7 +21,7 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
-                    $sql = "SELECT COUNT(student_id) AS total FROM `student`";
+                    $sql = "SELECT COUNT(user_id) AS total FROM `user`";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
                     echo $row['total'];
@@ -41,7 +41,7 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
-                    $sql = "SELECT COUNT(equip_status) AS status FROM equipment WHERE equip_status='Booked'";
+                    $sql = "SELECT COUNT(record_status) AS status FROM record WHERE record_status='Booked'";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
                     echo $row['status'];
@@ -61,7 +61,7 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
-                    $sql = "SELECT COUNT(record_sub) as sub FROM record WHERE record_sub='active'";
+                    $sql = "SELECT COUNT(record_status) as sub FROM record WHERE record_status='active'";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
                     echo $row['sub'];
@@ -152,7 +152,7 @@
                     <div class="col s6 grey-text text-darken-1">
                       <h4>
                         <?php
-                          $sql = "SELECT COUNT(student_id) as total FROM student";
+                          $sql = "SELECT COUNT(user_id) as total FROM user";
                           $result = mysqli_query($conn, $sql);
                           $row = mysqli_fetch_array($result);
                           echo $row['total'];
@@ -223,24 +223,14 @@
               $row = mysqli_fetch_array($result);
               echo "<li class='collection-item'>Total: <span class='secondary-content'>".$row['total']."</span></li>";
 
-              // Available
-              $sql = "SELECT COUNT(equip_status) as available from `equipment` WHERE equip_status='Available'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_array($result);
-              echo "<li class='collection-item'>Available: <span class='secondary-content green-text'>".$row['available']."</span></li>";
-
+          
               // Booked
-              $sql = "SELECT COUNT(equip_status) as booked from `equipment` WHERE equip_status='Booked'";
+              $sql = "SELECT COUNT(record_status) as booked from `record` WHERE record_status='Booked'";
               $result = mysqli_query($conn, $sql);
               $row = mysqli_fetch_array($result);
               echo "<li class='collection-item'>Booked: <span class='secondary-content'>".$row['booked']."</span></li>";
 
-              // Damage
-              $sql = "SELECT COUNT(equip_status) as damage from `equipment` WHERE equip_status='Damage'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_array($result);
-              echo "<li class='collection-item'>Damage: <span class='secondary-content red-text'>".$row['damage']."</span></li>";
-            ?>
+               ?>
           </ul>
 
           <ul class="collection with-header z-depth-1">
@@ -249,7 +239,7 @@
             </li>
             <?php
               // Total student
-              $sql = "SELECT COUNT(student_id) as total from `student`";
+              $sql = "SELECT COUNT(user_id) as total from `user`";
               $result = mysqli_query($conn, $sql);
               $row = mysqli_fetch_array($result);
               echo "<li class='collection-item'>Total student: <span class='secondary-content green-text'>".$row['total']."</span></li>";

@@ -10,14 +10,24 @@
   if (filter_has_var(INPUT_POST, 'submit')) {
     // Get form data
     $id = mysqli_real_escape_string($conn, $_POST['id']);
-    $status = mysqli_real_escape_string($conn, $_POST['status']);
-    $price = mysqli_real_escape_string($conn, $_POST['price']);
-
+    $e_name = mysqli_real_escape_string($conn, $_POST['equipmentname']);
+    $e_model = mysqli_real_escape_string($conn, $_POST['equipmentmodel']);
+    $internalprice = mysqli_real_escape_string($conn, $_POST['internaluserprice']);
+    $externalprice = mysqli_real_escape_string($conn, $_POST['externaluserprice']);
+    $industryprice = mysqli_real_escape_string($conn, $_POST['industryuserprice']);
+    $rate = mysqli_real_escape_string($conn, $_POST['ratetype']);
+   
+    echo "$id";
+    echo "$e_model";
+    echo "$e_name";
+    echo "$industryprice";
+    echo "$internalprice";
+    echo "$externalprice";
     // Check if the input is empty
-    if (!empty($id) && !empty($status) && !empty($price)) {
+    if (!empty($id) && !empty($e_model) && !empty($internalprice) && !empty($externalprice) && !empty($industryprice)) {
       // pass
-      $sql = "INSERT INTO `equipment` (`equip_id`, `equip_status`, `equip_price`)
-      VALUES ('$id', '$status', '$price')";
+      $sql = "INSERT INTO `equipment` (`equip_id`, `Equipment`, `Model`,`InternalUsers`,`ExternalUsers`,`IndustryUsers`,`RateType`)
+      VALUES ('$id', '$e_name', '$e_model','$internalprice','$externalprice','$industryprice','$rate')";
 
       if (mysqli_query($conn, $sql)) {
         // Success
@@ -77,9 +87,10 @@
           <tr class="myHead">
             <th>#</th>
             <th>Equipment id</th>
-            <th>Status</th>
-            <th>Price (RM)</th>
-            <!-- <th>Owner</th> -->
+            <th>Internal User price</th>
+            <th>External User price </th>
+            <th>Industry User price </th>
+            <th>Rate Type </th>
             <th colspan="2">Action</th>
           </tr>
         </thead>
@@ -94,8 +105,11 @@
             <tr>
               <td><?php echo $i; $i++ ?></td>
               <td><?php echo $row['equip_id']; ?></td>
-              <td><?php echo $row['equip_status']; ?></td>
-              <td><?php echo $row['equip_price']; ?></td>
+              
+              <td><?php echo $row['InternalUsers']; ?></td>
+              <td><?php echo $row['ExternalUsers']; ?></td>
+              <td><?php echo $row['IndustryUsers']; ?></td>
+              <td><?php echo $row['RateType']; ?></td>
               <td>
                   <a href="equip_edit.php?id=<?php echo $row['equip_id']; ?>" class='blue-text tooltipped' data-position='right' data-tooltip='Edit'><i class='fas fa-pencil-alt'></i></a>
               </td>
@@ -124,23 +138,46 @@
                 <label for="id">Equipment Id</label>
               </div>
             </div>
+           
             <div class="row">
               <div class="input-field col s12">
-                <select name="status">
+                <input id="equipmentname" type="text" name="equipmentname">
+                <label for="equipmentname"> Equipment Name </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="equipmentmodel" type="text" name="equipmentmodel">
+                <label for="equipmentmodel"> Equipment Model </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="internaluserprice" type="text" name="internaluserprice">
+                <label for="internaluserprice"> Internal User Price</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="externaluserprice" type="text" name="externaluserprice">
+                <label for="externaluserprice">External User Price</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="industryuserprice" type="text" name="industryuserprice">
+                <label for="industryuserprice">Industry User Price</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <select name="ratetype">
                   <option value="" disabled selected>Choose your option</option>
-                  <option value="Available">Available</option>
-                  <option value="Booked">Booked</option>
-                  <option value="Damage">Damage</option>
+                  <option value="perhour">per hour</option>
+                  <option value="persample">per sample</option>
                 </select>
-                <label>Status</label>
+                <label>Rate Type</label>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="price" type="text" name="price">
-                <label for="price">Price</label>
-              </div>
-            </div>
             <button type="submit" class="btn blue" name="submit">Add</button>
           </form>
         </div>

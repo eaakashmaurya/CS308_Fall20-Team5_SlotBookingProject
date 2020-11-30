@@ -10,7 +10,7 @@
   if (isset($_POST['update'])) {
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $adminId = $_SESSION['admin_id'];
-    $sql = "UPDATE `record` SET record_status='approved', record_sub='active', record_approved_by='$adminId' WHERE record_id='$id'";
+    $sql = "UPDATE `record` SET record_status='approved', record_approved_by='$adminId' WHERE record_id='$id'";
 
     if (mysqli_query($conn, $sql)) {
       $msg = "Update Successfull";
@@ -97,10 +97,10 @@
               </div>
               <a class="modal-trigger"  href="<?php echo '#'.$row['record_id']; ?>">View</a>
             </td>
-            <td><?php echo $row['student_id']; ?></td>
+            <td><?php echo $row['user_id']; ?></td>
             <td><?php echo $row['equip_id']; ?></td>
             <td><?php echo $row['record_status']; ?></td>
-            <td><?php echo $row['record_approved_by']; ?></td>
+            <!-- <td><?php echo $row['record_approved_by']; ?></td> -->
             <td>
               <form method='POST' action='records.php'>
                 <input type='hidden' name='id' value='<?php echo $row['record_id']; ?>'>

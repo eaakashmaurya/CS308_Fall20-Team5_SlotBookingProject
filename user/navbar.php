@@ -65,7 +65,7 @@
           </div>
           <div class="col s8">
             <a href="#">
-              <span class="name white-text"><?php echo $_SESSION['u_username']; ?></span>
+              <span class="name white-text"><?php echo $_SESSION['u_id']; ?></span>
             </a>
             <a href="#">
               <span class="email white-text"><?php echo $_SESSION['u_email']; ?></span>
