@@ -8,7 +8,7 @@
 
   // Form handling
   if (filter_has_var(INPUT_POST, 'submit')) {
-    // Get form data
+    // Get form data for Admin
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <!-- Equipment table list -->
+      <!-- Admin table list -->
       <table id="myTable" class="responsive-table highlight centered">
         <thead class="blue darken-2 white-text">
           <tr class="myHead">
@@ -115,8 +115,7 @@
         </tbody>
       </table>
 
-      <!-- Modal -->
-      <!-- Add equipment modal -->
+      <!-- Add admin -->
       <div id="addadmin" class="modal">
         <div class="modal-content">
           <h5>Add Admin</h5>

@@ -32,6 +32,7 @@
             </div>
           </div>
         </div>
+
         <div class="col s12 m3">
           <div class="card center">
             <div class="row">
@@ -41,17 +42,18 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
-                    $sql = "SELECT COUNT(record_status) AS status FROM record WHERE record_status='Booked'";
+                    $sql = "SELECT COUNT(record_status) AS status FROM record WHERE record_status='pending'";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
                     echo $row['status'];
                   ?>
                 </h4>
-                <p>Total Booked</p>
+                <p>Pending Bookings</p>
               </div>
             </div>
           </div>
         </div>
+
         <div class="col s12 m3">
           <div class="card center">
             <div class="row">
@@ -61,17 +63,18 @@
               <div class="col s6 grey-text text-darken-1">
                 <h4>
                   <?php
-                    $sql = "SELECT COUNT(record_status) as sub FROM record WHERE record_status='active'";
+                    $sql = "SELECT COUNT(record_status) as sub FROM record WHERE record_status<>'pending'";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($result);
                     echo $row['sub'];
                   ?>
                 </h4>
-                <p>Active user</p>
+                <p>Completed Bookings</p>
               </div>
             </div>
           </div>
         </div>
+
         <div class="col s12 m3">
           <div class="card center">
             <div class="row">
@@ -120,6 +123,7 @@
                 </div>
               </a>
             </div>
+
             <div class="col s12 m4">
               <a href="equipment.php">
                 <div class="card center">
@@ -142,6 +146,7 @@
                 </div>
               </a>
             </div>
+
             <div class="col s12 m4">
               <a href="users.php">
                 <div class="card center">
@@ -158,12 +163,13 @@
                           echo $row['total'];
                         ?>
                       </h4>
-                      <p>Students</p>
+                      <p>Users</p>
                     </div>
                   </div>
                 </div>
               </a>
             </div>
+
             <div class="col s12 m4">
               <a href="admin.php">
                 <div class="card center">
@@ -186,30 +192,7 @@
                 </div>
               </a>
             </div>
-            <div class="col s12 m8">
-              <a href="report.php">
-                <div class="card center">
-                  <div class="row">
-                    <div class="col s6 icon">
-                      <i class="fas fa-chart-line blue-text"></i>
-                    </div>
-                    <div class="col s6 grey-text text-darken-1">
-                      <h4>
-                        <?php
-                          $sql = "SELECT COUNT(record_id) as total FROM record";
-                          $result = mysqli_query($conn, $sql);
-                          $row = mysqli_fetch_array($result);
-                          echo $row['total'];
-                        ?>
-                      </h4>
-                      <p>Equipments</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+
         <div class="col s12 m3">
           <!-- Sales analytics -->
           <ul class="collection with-header z-depth-1">
@@ -217,19 +200,24 @@
               <i class="fas fa-box"></i> Equipments Status
             </li>
             <?php
-              // Total
+              // Total Equipments
               $sql = "SELECT COUNT(equip_id) as total from `equipment`";
               $result = mysqli_query($conn, $sql);
               $row = mysqli_fetch_array($result);
               echo "<li class='collection-item'>Total: <span class='secondary-content'>".$row['total']."</span></li>";
 
           
-              // Booked
-              $sql = "SELECT COUNT(record_status) as booked from `record` WHERE record_status='Booked'";
+              // Total Successful Bookings
+              $sql = "SELECT COUNT(record_status) as booked from `record` WHERE record_status<>'pending'";
               $result = mysqli_query($conn, $sql);
               $row = mysqli_fetch_array($result);
               echo "<li class='collection-item'>Booked: <span class='secondary-content'>".$row['booked']."</span></li>";
-
+              
+              // Total In-queue Bookings
+              $sql = "SELECT COUNT(record_status) as notbooked from `record` WHERE record_status='pending'";
+              $result = mysqli_query($conn, $sql);
+              $row = mysqli_fetch_array($result);
+              echo "<li class='collection-item'>Booked: <span class='secondary-content'>".$row['notbooked']."</span></li>";
                ?>
           </ul>
 
@@ -238,20 +226,15 @@
               <i class="fas fa-chart-line"></i> Sales status
             </li>
             <?php
-              // Total student
+
+              // Total users
               $sql = "SELECT COUNT(user_id) as total from `user`";
               $result = mysqli_query($conn, $sql);
               $row = mysqli_fetch_array($result);
               echo "<li class='collection-item'>Total student: <span class='secondary-content green-text'>".$row['total']."</span></li>";
 
-              // Total
-              $sql = "SELECT COUNT(record_id) as total from `record` WHERE record_status='approved'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_array($result);
-              echo "<li class='collection-item'>Paid student: <span class='secondary-content green-text'>".$row['total']."</span></li>";
-
-              // total paid equipment
-              $sql = "SELECT SUM(record_price) as price from `record` WHERE record_status='approved'";
+              // total revenue from equipment
+              $sql = "SELECT SUM(record_price) as price from `record` WHERE record_status<>'pending'";
               $result = mysqli_query($conn, $sql);
               $row = mysqli_fetch_array($result);
               echo "<li class='collection-item'>Total paid equipment: <span class='secondary-content green-text'>RM".$row['price']."</span></li>";
@@ -262,38 +245,7 @@
     </div>
   </section>
 </div>
+
 <?php
   include 'footer.php';
 ?>
-<script type="text/javascript">
-  $(document).ready(function(){
-    // Chart 1 - Total active user
-    let ctx1 = $('#chart2');
-    let myChart1 = new Chart(ctx1, {
-      type: 'pie',
-      data: {
-        labels: ["Active", "Expired"],
-        datasets: [{
-          data: [
-            <?php
-              $sql = "SELECT SUM(record_sub = 'active') AS active, SUM(record_sub = 'expired') AS expired FROM record";
-              $result = mysqli_query($conn, $sql);
-              while ($row = mysqli_fetch_array($result)) {
-                echo $row['active'].",".$row['expired'];
-              }
-            ?>
-          ],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)'
-          ],
-          borderWidth: 1
-        }]
-      }
-    });
-  });
-</script>

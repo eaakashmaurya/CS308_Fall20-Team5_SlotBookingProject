@@ -18,6 +18,7 @@
   // Check for submit
   if (filter_has_var(INPUT_POST, 'submit')){
     // Get form data
+    // Admin's data
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -61,7 +62,7 @@
       <h5><i class="fas fa-edit"></i> Edit user <span class="blue-text"><?php echo $row['admin_id']; ?></span></h5>
       <div class="divider"></div><br><br>
 
-      <!-- Equuipment edit form  -->
+      <!-- Admin's personal data edit form  -->
       <form class="col s12" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" novalidate>
         <div class="row">
           <div class="input-field">

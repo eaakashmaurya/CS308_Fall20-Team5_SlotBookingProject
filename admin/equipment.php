@@ -8,7 +8,7 @@
 
   // Form handling
   if (filter_has_var(INPUT_POST, 'submit')) {
-    // Get form data
+    // Get form data for equipment
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $e_name = mysqli_real_escape_string($conn, $_POST['equipmentname']);
     $e_model = mysqli_real_escape_string($conn, $_POST['equipmentmodel']);
@@ -17,12 +17,13 @@
     $industryprice = mysqli_real_escape_string($conn, $_POST['industryuserprice']);
     $rate = mysqli_real_escape_string($conn, $_POST['ratetype']);
    
-    echo "$id";
-    echo "$e_model";
-    echo "$e_name";
-    echo "$industryprice";
-    echo "$internalprice";
-    echo "$externalprice";
+    //echo "$id";
+    //echo "$e_model";
+    //echo "$e_name";
+    //echo "$industryprice";
+    //echo "$internalprice";
+    //echo "$externalprice";
+    
     // Check if the input is empty
     if (!empty($id) && !empty($e_model) && !empty($internalprice) && !empty($externalprice) && !empty($industryprice)) {
       // pass
@@ -87,6 +88,8 @@
           <tr class="myHead">
             <th>#</th>
             <th>Equipment id</th>
+            <th>Equipment Name</th>
+            <th>Equipment Model</th>
             <th>Internal User price</th>
             <th>External User price </th>
             <th>Industry User price </th>
@@ -105,7 +108,8 @@
             <tr>
               <td><?php echo $i; $i++ ?></td>
               <td><?php echo $row['equip_id']; ?></td>
-              
+              <td><?php echo $row['Equipment']; ?></td>
+              <td><?php echo $row['Model']; ?></td>
               <td><?php echo $row['InternalUsers']; ?></td>
               <td><?php echo $row['ExternalUsers']; ?></td>
               <td><?php echo $row['IndustryUsers']; ?></td>
@@ -126,8 +130,7 @@
         </tbody>
       </table>
 
-      <!-- Modal -->
-      <!-- Add equipewnt modal -->
+      <!-- Add equipment -->
       <div id="addequipment" class="modal">
         <div class="modal-content">
           <h5>Add Equipment</h5>

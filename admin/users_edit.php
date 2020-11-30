@@ -9,7 +9,7 @@
   // handle the get request base on user id
   if (isset($_REQUEST['id'])) {
     $id = mysqli_real_escape_string($conn, $_REQUEST['id']);
-    $sql = "SELECT * FROM `student` WHERE `student_id`='$id'";
+    $sql = "SELECT * FROM `user` WHERE `user_id`='$id'";
     $result = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_array($result);
@@ -19,14 +19,21 @@
   if (filter_has_var(INPUT_POST, 'submit')){
     // Get form data
     $id = mysqli_real_escape_string($conn, $_POST['id']);
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $SUname = mysqli_real_escape_string($conn, $_POST['SUname']);
+    $SUemail = mysqli_real_escape_string($conn, $_POST['SUemail']);
+    $type = mysqli_real_escape_string($conn, $_POST['type']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+    //echo "$id";
+    //echo "$name";
+    //echo "$SUname";
+    //echo "$SUemail";
+    //echo "$type";
+    //echo "$password";
 
     // Check required fields
-    if (!empty($id) && !empty($username) && !empty($name) && !empty($email) && !empty($phone) && !empty($password)){
+    if (!empty($id) && !empty($name) && !empty($email) && !empty($SUname) && !empty($SUemail) && !empty($type) && !empty($password)){
       // pass
       // Check email
       if (filter_var($email, FILTER_VALIDATE_EMAIL) === false){
@@ -40,10 +47,10 @@
         // var_dump($hashedPwd);
 
         // Insert user into database
-        $sql = "UPDATE `student` SET student_id='$id', student_username='$username', student_pwd='$hashedPwd', student_name='$name', student_email='$email', student_phone='$phone' WHERE student_id='$id'";
+        $sql = "UPDATE `user` SET `user_name`='$name', `user_email`='$email',`user_supervisor`='$SUname', `user_supervisor_email`='$SUemail', `user_type`='$type',`user_pwd`='$hashedPwd' WHERE `user_id`='$id'";
 
         if (mysqli_query($conn, $sql)){
-          $msg = "Update Successfull";
+          $msg = "Update success";
           $msgClass = "green";
         } else {
           $msg = "Update error: " . $sql . "<br>" . mysqli_error($conn);
@@ -56,9 +63,9 @@
       $msgClass = "red";
     }
   }
-
   mysqli_close($conn);
 ?>
+
 <div class="wrapper">
   <section class="section">
     <div class="container2">
@@ -70,43 +77,55 @@
       <h5><i class="fas fa-edit"></i> Edit user <span class="blue-text"><?php echo $row['student_id']; ?></span></h5>
       <div class="divider"></div><br><br>
 
-      <!-- Equipment edit form  -->
+      <!-- User data edit form  -->
       <form class="col s12" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" novalidate>
         <div class="row">
           <div class="input-field">
             <i class="material-icons prefix">credit_card</i>
-            <input type="text" id="id" name="id" value="<?php echo $row['student_id']; ?>">
-            <label for="id">Your User Id</label>
+            <input type="text" id="id" name="id" value="<?php echo isset($_POST['id']) ? $id : ''; ?>">
+            <label for="id">User ID (Roll No. for Internal Users, Affiliation No. for Ex. Users)</label>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field">
-            <i class="material-icons prefix">face</i>
-            <input type="text" id="uname" name="username" value="<?php echo $row['student_username']; ?>">
-            <label for="uname">Your Username</label>
-          </div>
-        </div>
+        
         <div class="row">
           <div class="input-field">
             <i class="material-icons prefix">account_circle</i>
-            <input type="text" id="name" name="name" value="<?php echo $row['student_name']; ?>">
-            <label for="name">Your Full Name</label>
+            <input type="text" id="name" name="name" value="<?php echo isset($_POST['name']) ? $name : ''; ?>">
+            <label for="name">Full Name</label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field">
             <i class="material-icons prefix">email</i>
-            <input type="email" id="email" name="email" value="<?php echo $row['student_email']; ?>">
-            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>">
+            <label for="email">Email</label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field">
-            <i class="material-icons prefix">local_phone</i>
-            <input type="text" id="phone" name="phone" value="<?php echo $row['student_phone']; ?>">
-            <label for="phone">Your Phone</label>
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" id="SUname" name="SUname" value="<?php echo isset($_POST['SUname']) ? $SUname : ''; ?>">
+            <label for="SUname">Superivisor Name</label>
           </div>
         </div>
+
+        <div class="row">
+          <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <input type="email" id="SUemail" name="SUemail" value="<?php echo isset($_POST['SUemail']) ? $SUemail : ''; ?>">
+            <label for="SUemail">Superivisor Email</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" id="type" name="type" value="<?php echo isset($_POST['type']) ? $type : ''; ?>">
+            <label for="type">Type (Internal/Extenal/Industrial)</label>
+          </div>
+        </div>
+
         <div class="row">
           <div class="input-field">
             <i class="material-icons prefix">lock</i>
@@ -114,6 +133,7 @@
             <label for="userid">New password</label>
           </div>
         </div>
+
         <div class="row">
           <div class="center">
             <button type="submit" class="waves-effect waves-light btn blue" name="submit">Update</button>

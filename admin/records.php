@@ -10,7 +10,7 @@
   if (isset($_POST['update'])) {
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $adminId = $_SESSION['admin_id'];
-    $sql = "UPDATE `record` SET record_status='approved', record_approved_by='$adminId' WHERE record_id='$id'";
+    $sql = "UPDATE `record` SET record_status='approved' WHERE record_id='$id'";
 
     if (mysqli_query($conn, $sql)) {
       $msg = "Update Successfull";
@@ -34,6 +34,24 @@
       $msgClass = "red";
     }
   }
+
+// Update with discounted price form handling
+if (isset($_POST['change_price'])) {
+  $id = mysqli_real_escape_string($conn, $_POST['id']);
+  $newprice = mysqli_real_escape_string($conn, $_POST['newprice']);  
+  $sql = "UPDATE `record` SET record_price='$newprice' WHERE record_id='$id'";
+
+  if (mysqli_query($conn, $sql)) {
+    $msg = "Update Discounted Price Successfull";
+    $msgClass = "green";
+  } else {
+    $msg = "Error updating this recrod";
+    $msgClass = "red";
+  }
+}
+
+
+
 ?>
 <div class="wrapper">
   <section class="section">
@@ -64,15 +82,15 @@
           <tr class="myHead">
             <th>#</th>
             <th>Id</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Price</th>
-            <th>Item</th>
-            <th>Student Id</th>
             <th>Equipment Id</th>
-            <th class="center-align">Status</th>
-            <th>Approved by</th>
-            <th colspan="2" class="center">Actions</th>
+            <th>User Id</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Qauntity</th>
+            <th>Status</th>
+            <th>Bill Ammount</th>
+            <th colspan="4" class="center">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -85,22 +103,37 @@
           <tr>
             <td><?php echo $i; $i++; ?></td>
             <td><?php echo $row['record_id']; ?></td>
+            <td><?php echo $row['equip_id']; ?></td>
+            <td><?php echo $row['user_id']; ?></td>
+            <td><?php echo $row['record_date']; ?></td>
             <td><?php echo $row['record_start']; ?></td>
             <td><?php echo $row['record_end']; ?></td>
-            <td><?php echo "RM"." ".$row['record_price']; ?></td>
-            <td>
-              <!-- Modal Structure -->
-              <div id="<?php echo $row['record_id']; ?>" class="modal">
-                <div class="modal-content">
-                  <img class="responsive-img" src="<?php echo '../'.$row['record_item']; ?>" alt="test">
-                </div>
-              </div>
-              <a class="modal-trigger"  href="<?php echo '#'.$row['record_id']; ?>">View</a>
-            </td>
-            <td><?php echo $row['user_id']; ?></td>
-            <td><?php echo $row['equip_id']; ?></td>
+            <td><?php echo $row['record_qauntity']; ?></td>
             <td><?php echo $row['record_status']; ?></td>
-            <!-- <td><?php echo $row['record_approved_by']; ?></td> -->
+            <td><?php echo "Rs"." ".$row['record_price']; ?></td>
+
+            <!-- Code to change price as per new discounted price -->
+
+            <td>
+              <form method='POST' action='records.php'>
+                <input type='hidden' name='id' value='<?php echo $row['record_id']; ?>'>
+                
+                <div class="row">
+                  <div class="input-field">
+                    <i class="material-icons prefix">credit_card</i>
+                    <input type="text" name="newprice" value="<?php echo isset($_POST['newprice']) ? $newprice : ''; ?>">
+                    <label for="newprice">Discounted Price</label>
+                </div>  
+                
+                <button type='submit' name='change_price' class='btn-flat blue-text tooltip' data-position='right' data-tooltip='Edit'>
+                  <i class='fas fa-pencil-alt'></i>
+                </button>
+                
+              </form>
+            </td>
+
+            <!-- Code to change status -->
+
             <td>
               <form method='POST' action='records.php'>
                 <input type='hidden' name='id' value='<?php echo $row['record_id']; ?>'>
@@ -115,6 +148,9 @@
                 <?php endif ?>
               </form>
             </td>
+
+            <!-- Code to delete record -->
+
             <td>
               <form method='POST' action='records.php'>
                 <input type='hidden' name='id' value='<?php echo $row['record_id']; ?>'>
@@ -124,6 +160,7 @@
               </form>
             </td>
           </tr>
+          
           <?php endwhile ?>
         </tbody>
       </table>

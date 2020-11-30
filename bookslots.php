@@ -48,7 +48,7 @@
     $start = mysqli_real_escape_string($conn, $_POST['start']);
     $end = mysqli_real_escape_string($conn, $_POST['end']);
     $qauntity = mysqli_real_escape_string($conn, $_POST['qauntity']);
-    $status = "Pending";
+    $status = "pending";
     
     // check date if start date lower then end date output some error
     if ($end <= $start && $start <= date("h:i:s")) {

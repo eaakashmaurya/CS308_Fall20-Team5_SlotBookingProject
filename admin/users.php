@@ -48,10 +48,11 @@
           <tr class="myHead">
             <th>#</th>
             <th>Id</th>
-            <th>Username</th>
-            <th>Full Name</th>
+            <th>Name</th>
             <th>Email</th>
-            <th>Phone</th>
+            <th>Supervisor Name</th>
+            <th>Supervisor Email</th>
+            <th>Type</th>
             <th colspan="2" class="center">Actions</th>
           </tr>
         </thead>
@@ -65,10 +66,12 @@
           <tr>
             <td><?php echo $i; $i++; ?></td>
             <td><?php echo $row['user_id']; ?></td>
-            
             <td><?php echo $row['user_name']; ?></td>
             <td><?php echo $row['user_email']; ?></td>
             <td><?php echo $row['user_supervisor']; ?></td>
+            <td><?php echo $row['user_supervisor_email']; ?></td>
+            <td><?php echo $row['user_type']; ?></td>
+            
             <td>
               <a href='users_edit.php?id=<?php echo $row['user_id']; ?>' class='btn-flat blue-text tooltip' data-position='right' data-tooltip='Edit'><i class='fas fa-pencil-alt'></i></a>
             </td>

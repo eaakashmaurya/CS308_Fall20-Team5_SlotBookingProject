@@ -13,12 +13,12 @@
             <div class="row">
               <div class="col s6 m6 grey-text">
                 <?php
-                  $sql = "SELECT COUNT(record_status) as sub from `record` WHERE record_status='active' AND user_id='".$_SESSION['u_id']."'";
+                  $sql = "SELECT COUNT(record_status) as sub from `record` WHERE record_status='pending' AND user_id='".$_SESSION['u_id']."'";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['sub']."</h5>";
                 ?>
-                <h5>Active</h5>
+                <h5>Pending Bookings</h5>
               </div>
               <div class="col s6 m6 icon green-text">
                 <i class="fas fa-check"></i>
@@ -31,12 +31,13 @@
             <div class="row">
               <div class="col s6 m6 grey-text">
                 <?php
-                  $sql = "SELECT COUNT(record_status) as status from `record` WHERE record_status='pending' AND user_id='".$_SESSION['u_id']."'";
+                  $date = date("Y-m-d");
+                  $sql = "SELECT COUNT(record_status) as status from `record` WHERE record_status<>'pending' AND user_id='".$_SESSION['u_id']."' AND record_date>=$date";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['status']."</h5>";
                 ?>
-                <h5>Pending</h5>
+                <h5>Today and Upcoming Booking</h5>
               </div>
               <div class="col s6 m6 icon blue-text">
                 <i class="fas fa-info-circle"></i>
@@ -49,12 +50,13 @@
             <div class="row">
               <div class="col s6 m6 grey-text">
                 <?php
-                  $sql = "SELECT COUNT(record_status) as sub from `record` WHERE record_status='expired' AND user_id='".$_SESSION['u_id']."'";
+                  $date = date("Y-m-d");
+                  $sql = "SELECT COUNT(record_status) as sub from `record` WHERE record_status<>'pending' AND user_id='".$_SESSION['u_id']."' AND record_date<$date";
                   $result = mysqli_query($conn, $sql);
                   $row = mysqli_fetch_array($result);
                   echo "<h5>".$row['sub']."</h5>";
                 ?>
-                <h5>Expired</h5>
+                <h5>Previous Bookings</h5>
               </div>
               <div class="col s6 m6 icon red-text">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -62,43 +64,27 @@
             </div>
           </div>
         </div>
-        <div class="col s12 m3">
-          <div class="card">
-            <div class="row">
-              <div class="col s6 m6 grey-text">
-                <?php
-                  $sql = "SELECT COUNT(user_id) as equipment from `record` WHERE user_id='".$_SESSION['u_id']."'";
-                  $result = mysqli_query($conn, $sql);
-                  $row = mysqli_fetch_array($result);
-                  echo "<h5>".$row['equipment']."</h5>";
-                ?>
-                <h5>Equipment</h5>
-              </div>
-              <div class="col s6 m6 icon yellow-text text-darken-2">
-                <i class="fas fa-box"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Details information -->
+      <!-- Detailed information -->
       <ul class="collapsible">
         <li>
           <div class="collapsible-header active blue darken-2 white-text">
-            <i class="fas fa-info-circle"></i>&nbsp Booking status
+            <i class="fas fa-info-circle"></i>&nbsp Detailed Bookings
           </div>
           <div class="collapsible-body">
             <table class="responsive-table highlight centered">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Start</th>
-                  <th>End</th>
-                  <th>Price</th>
-                  <th>Equipment id</th>
+                  <th>Id</th>
+                  <th>Equipment Id</th>
+                  <th>User Id</th>
+                  <th>Date</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Qauntity</th>
                   <th>Status</th>
-                  <!-- <th>Subscription</th> -->
+                  <th>Bill Ammount</th>
                 </tr>
               </thead>
               <tbody>
@@ -110,12 +96,15 @@
                 ?>
                 <tr>
                   <td><?php echo $i; $i++; ?></td>
+                  <td><?php echo $row['record_id']; ?></td>
+                  <td><?php echo $row['equip_id']; ?></td>
+                  <td><?php echo $row['user_id']; ?></td>
+                  <td><?php echo $row['record_date']; ?></td>
                   <td><?php echo $row['record_start']; ?></td>
                   <td><?php echo $row['record_end']; ?></td>
-                  <td><?php echo $row['record_price']; ?></td>
-                  <td><?php echo $row['equip_id']; ?></td>
+                  <td><?php echo $row['record_qauntity']; ?></td>
                   <td><?php echo $row['record_status']; ?></td>
-                  <!-- <td><?php echo $row['record_sub']; ?></td> -->
+                  <td><?php echo "Rs"." ".$row['record_price']; ?></td>
                 </tr>
               <?php endwhile ?>
               </tbody>
@@ -128,7 +117,6 @@
           </div>
           <div class="collapsible-body">
             <p><span class="grey-text">Name:</span> <?php echo strtoupper($_SESSION['u_name']); ?></p>
-            <!-- <p><span class="grey-text">Phone:</span> <?php echo $_SESSION['u_phone']; ?></p> -->
             <p><span class="grey-text">Email:</span> <?php echo $_SESSION['u_email']; ?></p>
             <a href="user_edit.php?id=<?php echo $_SESSION['u_id']; ?>" class="btn1"><i class="fas fa-pencil-alt"></i>&nbsp Edit</a>
           </div>

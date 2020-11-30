@@ -21,12 +21,12 @@
     $SUemail = mysqli_real_escape_string($conn, $_POST['SUemail']);
     $type = mysqli_real_escape_string($conn, $_POST['type']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    echo "$id";
-    echo "$name";
-    echo "$SUname";
-    echo "$SUemail";
-    echo "$type";
-    echo "$password";
+    //echo "$id";
+    //echo "$name";
+    //echo "$SUname";
+    //echo "$SUemail";
+    //echo "$type";
+    //echo "$password";
 
     // Check required fields
     if (!empty($id) && !empty($name) && !empty($email) && !empty($SUname) && !empty($SUemail) && !empty($type) && !empty($password)){

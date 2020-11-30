@@ -4,6 +4,9 @@
   include "navbar.php";
   require_once "../model/db.php";
 ?>
+
+<!-- Update this file to show graphical statistics -->
+
 <div class="wrapper">
   <section class="section">
     <div class="container2">
@@ -26,12 +29,13 @@
       <h5>Total Paid Student</h5>
       <canvas id="chart4"></canvas><br>
     </div> -->
+    
   </section>
 </div>
 <?php
   include "footer.php";
 ?>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(document).ready(function(){
     // Chart 1 - Total active user
     let ctx1 = $('#chart1');
@@ -41,12 +45,12 @@
         labels: ["Active", "Expired"],
         datasets: [{
           data: [
-            <?php
-              $sql = "SELECT SUM(record_sub = 'active') AS active, SUM(record_sub = 'expired') AS expired FROM record";
-              $result = mysqli_query($conn, $sql);
-              while ($row = mysqli_fetch_array($result)) {
-                echo $row['active'].",".$row['expired'];
-              }
+            //<?php
+              //$sql = "SELECT SUM(record_sub = 'active') AS active, SUM(record_sub = 'expired') AS expired FROM record";
+              //$result = mysqli_query($conn, $sql);
+              //while ($row = mysqli_fetch_array($result)) {
+              //  echo $row['active'].",".$row['expired'];
+              //}
             ?>
           ],
           backgroundColor: [
@@ -60,9 +64,9 @@
           borderWidth: 1
         }]
       }
-    });
+    }); -->
 
-    // // Chart 2 - Total booked
+    // Chart 2 - Total booked
     // let ctx2 = $('#chart2');
     // let myChart2 = new Chart(ctx2, {
     //   type: 'pie',
@@ -164,12 +168,12 @@
               label: '# Total Paid Student',
               data: [
                 <?php
-                  $sql = "SELECT SUM(record_status = 'approved') AS app,
-                  SUM(record_status = 'pending') AS pen FROM record";
-                  $result = mysqli_query($conn, $sql);
-                  while ($row = mysqli_fetch_array($result)) {
-                    echo $row['app'].",".$row['pen'];
-                  }
+                  //$sql = "SELECT SUM(record_status = 'approved') AS app,
+                  //SUM(record_status = 'pending') AS pen FROM record";
+                  //$result = mysqli_query($conn, $sql);
+                  //while ($row = mysqli_fetch_array($result)) {
+                  //  echo $row['app'].",".$row['pen'];
+                  //}
                 ?>
               ],
               backgroundColor: [
