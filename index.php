@@ -1,5 +1,6 @@
  <?php
   session_start();
+  //include or require takes the code from *.php files to this file
   include 'navbar.php';
   require 'model/db.php';
 ?>
@@ -15,16 +16,21 @@
       <div class="col s12 m9">
         <div class="row">
           <?php
+            //sql statement to select equipments
             $sql = "SELECT * FROM `equipment`";
+            ////perform query on $sql
             $result = mysqli_query($conn, $sql);
+            //when the row is equal to the fetched row from result
             while ($row = mysqli_fetch_array($result)):
           ?>
           <div class='col s12 m6'>
             <div class='card'>
               <div class='card-image'>
+                <!-- added image  -->
                 <img src='img/machine1.jpg' class='responsive-img' alt='equipment'>
               </div>
               <div class='card-action'>
+                <!-- input id of the equipment -->
                 <input type="hidden" name="id" value="<?php echo $row['equip_id']; ?>">
                 <div><?php echo $row['equip_id']; ?></div>
                 <!-- <div><?php echo $row['Equipment']; ?></div> -->
@@ -46,6 +52,7 @@
               <i class="fas fa-info-circle"></i> Notification
             </li>
             <li>
+              <!-- link register.php -->
               <p style="padding:0 1em;">Please <a href="register.php">register</a> before making any booking, 
               once booked print the receipt and bring the receipt for payment at counter receptionist.</p>
             </li>
@@ -63,6 +70,7 @@
               <p style="padding:0 1em;">
                 <br><br>
                 <i class="fas fa-phone"></i>&nbsp;&nbsp;01905 267841<br>
+                <!-- email id for C4dfed -->
                 <i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:c4dfed@iitmandi.ac.in">C4DFED@iitmandi.ac.in</a> <br>
                 <i> <a href="contactus.php"> Contact Us </a> </i>
               </p>
