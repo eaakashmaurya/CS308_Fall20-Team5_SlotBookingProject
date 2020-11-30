@@ -14,7 +14,7 @@
     <script type="text/javascript">
     
         // ask user for name with popup prompt    
-        var name = prompt("Enter your chat name:", " ");
+        var name = prompt("Enter your chat name:", "Guest");
         
         // default name is 'Guest'
     	if (!name || name === ' ') {

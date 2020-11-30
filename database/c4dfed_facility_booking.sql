@@ -133,7 +133,7 @@ CREATE TABLE `user` (
 --
 -- Table structure for table `chat_message`
 --
-
+DROP TABLE IF EXISTS `chat_message`;
 CREATE TABLE `chat_message` (
   `chat_message_id` int(11) NOT NULL,
   `to_user_id` int(11) NOT NULL,
@@ -153,7 +153,7 @@ ALTER TABLE `chat_message`
 --
 -- Table structure for table `login_details`
 --
-
+DROP TABLE IF EXISTS `login_details`;
 CREATE TABLE `login_details` (
   `login_details_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -189,6 +189,7 @@ CREATE TABLE `achievements` (
   `achievement_id` int(11) NOT NULL AUTO_INCREMENT,
   `record_id` int(11) ,
   `user_id` varchar(15) ,
+  `achievement_date` DATE NOT NULL, 
   `achievement_type` varchar(20) , -- Publication/Other
   `details` varchar(255) ,
   `other` varchar(255) DEFAULT NULL,
